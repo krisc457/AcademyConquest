@@ -1,0 +1,91 @@
+#gameMap {
+  width: 6284px;
+  height: 3066px;
+  background-image: url("baseMap.jpg");
+  background-size: 100% 100%;
+}
+
+svg {
+  width: 100%;
+  height: 100%;/*
+  margin-top: -5px;
+  margin-left: -9px;
+  /*filter: blur(3px);*/
+}
+
+path {
+  opacity: 0;
+  fill: rgba(19,14,13,0.8);
+  stroke: rgba(38,28,26,1);
+  stroke-width: 5px;
+}
+
+path:hover:not(.active) {
+  animation: opacityShow 0.25s;
+  animation-fill-mode:forwards;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  cursor: pointer;
+}
+
+.active:hover {
+  animation: opacityShowActive 0.25s;
+  animation-fill-mode:forwards;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  cursor: pointer;
+}
+
+.active {
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.teal {
+  fill: #358b86;
+  stroke: #358b86;
+}
+
+.purple {
+  fill: #992fca;
+  stroke: #992fca;
+}
+
+.green {
+  fill: #58a004;
+  stroke: #58a004;
+}
+
+.blue {
+  fill: #2437a8;
+  stroke: #2437a8;
+}
+
+.red {
+  fill: #c03211;
+  stroke: #c03211;
+}
+
+.yellow {
+  fill: #f7b71a;
+  stroke: #f7b71a;
+  opacity: 0.7;
+}
+
+@keyframes opacityShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes opacityShowActive {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
