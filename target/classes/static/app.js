@@ -12,6 +12,19 @@ function setConnected(connected) {
     $("#greetings").html("");
 }
 
+$(document).ready(function(){
+    var socket = new SockJS('/gs-guide-websocket');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+        setConnected(true);
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/gameRoom', function (greeting) {
+            updateGame(JSON.parse(greeting.body).content);
+        });
+    });
+});
+
+/*
 function connect() {
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
@@ -23,6 +36,7 @@ function connect() {
         });
     });
 }
+*/
 
 function disconnect() {
     if (stompClient != null) {
@@ -36,13 +50,9 @@ function sendGameTurnData() {
     stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
-// function updateGame(message) {
-//     // Hit kommer resultatet av varje turn, så att vårt spel uppdateras.
-//     //$("#greetings").append("<tr><td>" + message + "</td></tr>");
-//     console.log(message);
-// }
-
-
+function updateGame(message) {
+    $("#CountryName").html(message);
+}
 
 $(function () {
     $("form").on('submit', function (e) {

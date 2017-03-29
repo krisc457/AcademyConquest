@@ -40,50 +40,11 @@
 
     </div>
 </div>
-
-
-<div id="menu-abs" class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="connect">WebSocket connection:</label>
-                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
-                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-6">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="name">What is your name?</label>
-                    <input type="text" id="name" class="form-control" placeholder="Your name here..." />
-                </div>
-                <button id="endTurn" class="btn btn-default" type="submit">End turn</button>
-            </form>
-        </div>
-    </div>
-</div>
-<script>
-    function updateGame(message) {
-        $("#CountryName").html(message);
-
-    }
-
-    $(document).ready(function() {
-        $('g > a').click(function () {
-            var myId = $(this).parent().parent().attr('id');
-            stompClient.send("/app/endTurn", {}, JSON.stringify({'name': myId}));
-        });
-    });
-</script>
-</div>
-  <div id="gameMap">
-      <?xml version="1.0" encoding="utf-8"?>
-    <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-    viewBox="0 0 12568 6132" style="enable-background:new 0 0 12568 6132;" xml:space="preserve">
+<div id="gameMap">
+  <?xml version="1.0" encoding="utf-8"?>
+  <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  viewBox="0 0 12568 6132" style="enable-background:new 0 0 12568 6132;" xml:space="preserve">
     <g id="g1">
       <g><a  data-toggle="modal" data-target="#myModal">
         <path d="M986,384c0.1,0.3,0.2,0.8,0.4,0.8c6.1,0,11.9,3,18.1,2.2c4.6,1.8,9.4,0.8,14.1,0.9c1.7,0,3.4-0.7,5.1-0.9
