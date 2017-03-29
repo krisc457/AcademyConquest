@@ -11,6 +11,9 @@ public class GreetingController {
 
     @GetMapping("/")
     public ModelAndView index(){
+        int abc = 1;
+        int patrik = 7;
+        int efg = 99;
         ModelAndView modelmodel = new ModelAndView("index");
         return modelmodel;
     }
