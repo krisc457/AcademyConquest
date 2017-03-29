@@ -36,10 +36,13 @@ function sendGameTurnData() {
     stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
-function updateGame(message) {
-    // Hit kommer resultatet av varje turn, så att vårt spel uppdateras.
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
-}
+// function updateGame(message) {
+//     // Hit kommer resultatet av varje turn, så att vårt spel uppdateras.
+//     //$("#greetings").append("<tr><td>" + message + "</td></tr>");
+//     console.log(message);
+// }
+
+
 
 $(function () {
     $("form").on('submit', function (e) {
@@ -49,3 +52,4 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#endTurn" ).click(function() { sendGameTurnData(); });
 });
+
