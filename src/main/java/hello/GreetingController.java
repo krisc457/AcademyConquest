@@ -13,6 +13,7 @@ import java.util.List;
 public class GreetingController {
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
+    
     @GetMapping("/")
     public ModelAndView index(){
         ModelAndView modelmodel = new ModelAndView("index");
