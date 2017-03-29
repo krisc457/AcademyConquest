@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Controller
 public class GreetingController {
 
@@ -17,10 +15,11 @@ public class GreetingController {
         return modelmodel;
     }
 
+
     @GetMapping("/map")
-    public ModelAndView map(){
-        ModelAndView modelmodel = new ModelAndView("map");
-        return modelmodel;
+    public ModelAndView map() {
+        ModelAndView mapmodel = new ModelAndView("map");
+        return mapmodel;
     }
 
     @MessageMapping("/endTurn")

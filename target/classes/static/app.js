@@ -49,4 +49,3 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#endTurn" ).click(function() { sendGameTurnData(); });
 });
-
