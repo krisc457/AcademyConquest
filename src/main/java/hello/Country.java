@@ -9,7 +9,6 @@ import java.util.TreeSet;
 
 public class Country {
 
-
     countries = new Country[37];
     countries[1] = new Country("Columbia");
     countries[2] = new Country("Russian America");
