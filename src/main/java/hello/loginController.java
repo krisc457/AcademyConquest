@@ -20,12 +20,12 @@ public class loginController {
     Repository repository;
 
     @PostMapping("/login")
-    public ModelAndView getUserLogin(@RequestParam String Username, HttpSession session, @RequestParam String Password) throws Exception {
+    public ModelAndView getUserLogin(@RequestParam String Username/*, HttpSession session,*/, @RequestParam String Password) throws Exception {
         UserLogin login = repository.getUserLogin(Username, Password);
-        if (login == null) {
+        /*if (login == null) {
             return new ModelAndView("redirect:/index.html");
         }
-            session.setAttribute("user", login);
+            session.setAttribute("user", login);*/
         return new ModelAndView("/map").addObject("UserName",Username);
     }
 
