@@ -1,13 +1,13 @@
 package hello;
 
-public class HelloMessage {
+public class SelectedRegionObject {
 
     private String name;
 
-    public HelloMessage() {
+    public SelectedRegionObject() {
     }
 
-    public HelloMessage(String name) {
+    public SelectedRegionObject(String name) {
         this.name = name;
     }
 

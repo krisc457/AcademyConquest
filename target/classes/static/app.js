@@ -12,7 +12,7 @@ function setConnected(connected) {
     $("#greetings").html("");
 }
 
-function connect() {
+$(document).ready(function(){
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
@@ -22,7 +22,7 @@ function connect() {
             updateGame(JSON.parse(greeting.body).content);
         });
     });
-}
+});
 
 function disconnect() {
     if (stompClient != null) {
@@ -37,8 +37,12 @@ function sendGameTurnData() {
 }
 
 function updateGame(message) {
+<<<<<<< HEAD
     // Hit kommer resultatet av varje turn, så att vårt spel uppdateras.
     $("#greetings").append("<tr><td>" + message + "</td></tr>");
+=======
+    $("#CountryName").html(message);
+>>>>>>> 1642676a5c7571e879cbf5be136cde8a613a0e96
 }
 
 $(function () {

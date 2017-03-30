@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class GreetingController {
+public class GameController {
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
     @GetMapping("/")
@@ -33,8 +33,18 @@ public class GreetingController {
 
     @MessageMapping("/endTurn")
     @SendTo("/topic/gameRoom")
+<<<<<<< HEAD:src/main/java/hello/GreetingController.java
     public Greeting greeting(HelloMessage message) throws Exception {
         return new Greeting("Hello, " + message.getName() + "!");
+=======
+    public RegionInfo region(SelectedRegionObject regionIdObject) throws Exception {
+        List<Region> gameStuff = boardstuff.getRegions();
+        String gID = regionIdObject.getName().substring(1);
+        int gInt = Integer.parseInt(gID)-1;
+        String currLand = gameStuff.get(gInt).getName();
+        System.out.println(gID + " Land " + currLand);
+        return new RegionInfo(currLand);
+>>>>>>> 1642676a5c7571e879cbf5be136cde8a613a0e96:src/main/java/hello/GameController.java
     }
 
 }
