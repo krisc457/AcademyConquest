@@ -130,3 +130,17 @@ path:hover:not(.active) {
   from { -o-transform:scale(1) }
   to { -o-transform:scale(0.8) }
 }
+
+.logo {
+  font-family: 'Delius Unicase', cursive;
+  align-content: center;
+}
+
+.signin {
+  align-content: center;
+}
+
+a:link {
+  text-decoration: none;
+  color: #f7b71a;
+}
