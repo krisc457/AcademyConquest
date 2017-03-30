@@ -13,11 +13,11 @@ import java.util.List;
 public class GameController {
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
-    @GetMapping("/")
+    /*@GetMapping("/")
     public ModelAndView index(){
         ModelAndView modelmodel = new ModelAndView("index");
         return modelmodel;
-    }
+    }*/
 
 
     @GetMapping("/map")
