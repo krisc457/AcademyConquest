@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class GreetingController {
+public class GameController {
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
 
@@ -33,15 +33,13 @@ public class GreetingController {
 
     @MessageMapping("/endTurn")
     @SendTo("/topic/gameRoom")
-    public Greeting greeting(HelloMessage message) throws Exception {
+    public RegionInfo region(SelectedRegionObject regionIdObject) throws Exception {
         List<Region> gameStuff = boardstuff.getRegions();
-
-        String gID = message.getName().substring(1);
+        String gID = regionIdObject.getName().substring(1);
         int gInt = Integer.parseInt(gID)-1;
         String currLand = gameStuff.get(gInt).getName();
         System.out.println(gID + " Land " + currLand);
-
-        return new Greeting(currLand);
+        return new RegionInfo(currLand);
     }
 
 }
