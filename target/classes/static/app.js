@@ -37,12 +37,9 @@ function sendGameTurnData() {
 }
 
 function updateGame(message) {
-<<<<<<< HEAD
-    // Hit kommer resultatet av varje turn, så att vårt spel uppdateras.
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
-=======
+
     $("#CountryName").html(message);
->>>>>>> 1642676a5c7571e879cbf5be136cde8a613a0e96
+
 }
 
 $(function () {

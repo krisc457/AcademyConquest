@@ -1,10 +1,5 @@
 $(document).ready(function() {
-<<<<<<< HEAD
-    $('g > a').click(function () {
-        var myId = $(this).parent().parent().attr('id');
-        $("#CountryName").html(myId);
-    });
-=======
+
 
     $('g > a').click(function () {
         var myId = $(this).parent().parent().attr('id');
@@ -12,7 +7,6 @@ $(document).ready(function() {
     });
 
     // Bortkommenterat zoomscript nedan
-
 
     var width = $("#gameMap").width();
     var height = $("#gameMap").height();
@@ -39,5 +33,5 @@ $(document).ready(function() {
         }, 500);
     });
 
->>>>>>> 1642676a5c7571e879cbf5be136cde8a613a0e96
+
 });
