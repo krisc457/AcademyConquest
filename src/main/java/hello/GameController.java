@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,15 +22,22 @@ public class GameController {
 
 
     @GetMapping("/map")
-    public ModelAndView map() {
+    public ModelAndView map(HttpSession session) {
         ModelAndView mapmodel = new ModelAndView("map");
 
         List<Region> gameStuff = boardstuff.getRegions();
 
         System.out.println("Land" + gameStuff.get(30).getName());
 
+        if (session.getAttribute("user") == null) {
+            return new ModelAndView("redirect:/index.html");
+
+        }
+
         return mapmodel.addObject(gameStuff.get(20).getRegionID());
     }
+
+
 
     @MessageMapping("/endTurn")
     @SendTo("/topic/gameRoom")
