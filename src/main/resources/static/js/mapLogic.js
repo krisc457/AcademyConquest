@@ -7,7 +7,6 @@ $(document).ready(function() {
 
     // Bortkommenterat zoomscript nedan
 
-
     var width = $("#gameMap").width();
     var height = $("#gameMap").height();
 
