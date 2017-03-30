@@ -37,7 +37,9 @@ function sendGameTurnData() {
 }
 
 function updateGame(message) {
+
     $("#CountryName").html(message);
+
 }
 
 $(function () {
@@ -48,4 +50,3 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#endTurn" ).click(function() { sendGameTurnData(); });
 });
-
