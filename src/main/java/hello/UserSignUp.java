@@ -3,7 +3,7 @@ package hello;
 import javax.validation.constraints.Size;
 
 /**
- * Created by Administrator on 2017-03-09.
+ * Created by Bodsten on 2017-03-30.
  */
 public class UserSignUp {
 

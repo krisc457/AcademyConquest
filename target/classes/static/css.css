@@ -132,8 +132,9 @@ path:hover:not(.active) {
   align-content: center;
 }
 
-.signin {
-  align-content: center;
+#divbgimg {
+  background-image: url("/adventurebackground.jpg");
+  background-size: 100% 100%;
 }
 
 a:link {
