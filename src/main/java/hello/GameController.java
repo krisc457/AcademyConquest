@@ -12,8 +12,10 @@ import java.util.List;
 
 @Controller
 public class GameController {
+    //Startar länderna utanför för att skriva om länderna hela tiden
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
+    List<Region> gameStuff = boardstuff.getRegions();
     /*@GetMapping("/")
     public ModelAndView index(){
         ModelAndView modelmodel = new ModelAndView("index");
@@ -43,10 +45,10 @@ public class GameController {
     @SendTo("/topic/gameRoom")
 
     public RegionInfo region(SelectedRegionObject regionIdObject) throws Exception {
-        List<Region> gameStuff = boardstuff.getRegions();
         String gID = regionIdObject.getName().substring(1);
+        //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp texten
         int gInt = Integer.parseInt(gID)-1;
-        String currLand = gameStuff.get(gInt).getName();
+            String currLand = gameStuff.get(gInt).getName() + "!1Troops " + gameStuff.get(gInt).getTroops() + "<br>Networth " + gameStuff.get(gInt).getNetworth();
         System.out.println(gID + " Land " + currLand);
         return new RegionInfo(currLand);
 
