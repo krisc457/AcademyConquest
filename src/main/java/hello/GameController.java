@@ -6,42 +6,50 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class GreetingController {
+public class GameController {
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
-
-    @GetMapping("/")
+    /*@GetMapping("/")
     public ModelAndView index(){
         ModelAndView modelmodel = new ModelAndView("index");
         return modelmodel;
-    }
+    }*/
 
 
     @GetMapping("/map")
-    public ModelAndView map() {
+    public ModelAndView map(HttpSession session) {
         ModelAndView mapmodel = new ModelAndView("map");
 
+        List<Region> gameStuff = boardstuff.getRegions();
 
+        System.out.println("Land" + gameStuff.get(30).getName());
 
+        if (session.getAttribute("user") == null) {
+            return new ModelAndView("redirect:/index.html");
 
-        return mapmodel;
+        }
+
+        return mapmodel.addObject(gameStuff.get(20).getRegionID());
     }
+
+
 
     @MessageMapping("/endTurn")
     @SendTo("/topic/gameRoom")
-    public Greeting greeting(HelloMessage message) throws Exception {
-        List<Region> gameStuff = boardstuff.getRegions();
 
-        String gID = message.getName().substring(1);
+    public RegionInfo region(SelectedRegionObject regionIdObject) throws Exception {
+        List<Region> gameStuff = boardstuff.getRegions();
+        String gID = regionIdObject.getName().substring(1);
         int gInt = Integer.parseInt(gID)-1;
         String currLand = gameStuff.get(gInt).getName();
         System.out.println(gID + " Land " + currLand);
+        return new RegionInfo(currLand);
 
-        return new Greeting(currLand);
     }
 
 }

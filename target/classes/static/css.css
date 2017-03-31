@@ -1,20 +1,13 @@
 #gameMap {
-  width: 6284px;
-  height: 3066px;
+  width: 5027px;
+  height: 2453px;
   background-image: url("baseMap.jpg");
   background-size: 100% 100%;
 }
 
-#menu-abs{
-  position: fixed;
-}
-
 svg {
   width: 100%;
-  height: 100%;/*
-  margin-top: -5px;
-  margin-left: -9px;
-  /*filter: blur(3px);*/
+  height: 100%;
 }
 
 path {
@@ -76,6 +69,10 @@ path:hover:not(.active) {
   opacity: 0.7;
 }
 
+#zoomIn, #zoomOut {
+  cursor: pointer;
+}
+
 @keyframes opacityShow {
   0% {
     opacity: 0;
@@ -92,4 +89,54 @@ path:hover:not(.active) {
   100% {
     opacity: 1;
   }
+}
+
+/* CSS kod för zoom kod nedan */
+
+@keyframes zoomIn {
+  from { transform:scale(1) }
+  to { transform:scale(1.25) }
+}
+@-moz-keyframes zoomIn {
+  from { -moz-transform:scale(1) }
+  to { -moz-transform:scale(1.25) }
+}
+@-webkit-keyframes zoomIn {
+  from { -webkit-transform:scale(1) }
+  to { -webkit-transform:scale(1.25) }
+}
+@-o-keyframes zoomIn {
+  from { -o-transform:scale(1) }
+  to { -o-transform:scale(1.25) }
+}
+
+@keyframes zoomOut {
+  from { transform:scale(1) }
+  to { transform:scale(0.8) }
+}
+@-moz-keyframes zoomOut {
+  from { -moz-transform:scale(1) }
+  to { -moz-transform:scale(0.8) }
+}
+@-webkit-keyframes zoomOut {
+  from { -webkit-transform:scale(1) }
+  to { -webkit-transform:scale(0.8) }
+}
+@-o-keyframes zoomOut {
+  from { -o-transform:scale(1) }
+  to { -o-transform:scale(0.8) }
+}
+
+.logo {
+  font-family: 'Delius Unicase', cursive;
+  align-content: center;
+}
+
+.signin {
+  align-content: center;
+}
+
+a:link {
+  text-decoration: none;
+  color: #f7b71a;
 }

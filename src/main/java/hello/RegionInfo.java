@@ -1,13 +1,13 @@
 package hello;
 
-public class Greeting {
+public class RegionInfo {
 
     private String content;
 
-    public Greeting() {
+    public RegionInfo() {
     }
 
-    public Greeting(String content) {
+    public RegionInfo(String content) {
         this.content = content;
     }
 
