@@ -16,7 +16,6 @@ public class GameController {
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
     List<Region> gameStuff = boardstuff.getRegions();
-    Player usa = new Player();
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
