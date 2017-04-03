@@ -7,7 +7,7 @@ public class Player {
 
     private String userName;
     private String majorNation;
-    private int[] countriesOwned;
+    private String[] countriesOwned;
     private int treasury;
     private boolean fortification;
 
@@ -27,11 +27,11 @@ public class Player {
         this.majorNation = majorNation;
     }
 
-    public int[] getCountriesOwned() {
+    public String[] getCountriesOwned() {
         return countriesOwned;
     }
 
-    public void setCountriesOwned(int[] countriesOwned) {
+    public void setCountriesOwned(String[] countriesOwned) {
         this.countriesOwned = countriesOwned;
     }
 

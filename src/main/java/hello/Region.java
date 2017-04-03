@@ -1,5 +1,6 @@
 package hello;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Region {
@@ -8,7 +9,7 @@ public class Region {
     private String name;
     private long troops;
     private long networth;
-    private List<String> adjacentRegions;
+    private List<String> adjacentRegions = new ArrayList<>();
 
     public String getRegionID() {
         return regionID;
@@ -55,7 +56,6 @@ public class Region {
         this.name = name;
         this.troops = troops;
         this.networth = networth;
-        this.adjacentRegions = adjacentRegions;
     }
 
     public List<String> getAdjacentRegions() {
