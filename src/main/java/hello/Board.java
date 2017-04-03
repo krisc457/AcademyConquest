@@ -3,9 +3,6 @@ package hello;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Administrator on 2017-03-29.
- */
 public class Board {
 
     private List<Region> regions = new ArrayList<>();
@@ -47,9 +44,46 @@ public class Board {
         regions.add(new Region("g34","Patagonia", returnRandomIntRange(10000,1000), returnRandomIntRange(10000,1000)));
         regions.add(new Region("g35","Tierra del Fuego", returnRandomIntRange(10000,1000), returnRandomIntRange(10000,1000)));
         regions.add(new Region("g36","Falkland Isles", returnRandomIntRange(10000,1000), returnRandomIntRange(10000,1000)));
-        //regions.add(new Region("g202","Hawaii");
-        
-        //return regions;
+    }
+
+    public void addAdjacentRegions() {
+        regions.get(0).addToAdjacentRegions("g2");
+        regions.get(0).addToAdjacentRegions("g3");
+        regions.get(0).addToAdjacentRegions("g4");
+        regions.get(0).addToAdjacentRegions("g10");
+
+        regions.get(1).addToAdjacentRegions("g1");
+
+        regions.get(2).addToAdjacentRegions("g1");
+        regions.get(2).addToAdjacentRegions("g4");
+        regions.get(2).addToAdjacentRegions("g5");
+
+        regions.get(3).addToAdjacentRegions("g1");
+        regions.get(3).addToAdjacentRegions("g3");
+        regions.get(3).addToAdjacentRegions("g5");
+        regions.get(3).addToAdjacentRegions("g10");
+        regions.get(3).addToAdjacentRegions("g9");
+        regions.get(3).addToAdjacentRegions("g7");
+
+        regions.get(4).addToAdjacentRegions("g3");
+        regions.get(4).addToAdjacentRegions("g4");
+        regions.get(4).addToAdjacentRegions("g7");
+
+        regions.get(5).addToAdjacentRegions("g7");
+        regions.get(5).addToAdjacentRegions("g8");
+
+        regions.get(6).addToAdjacentRegions("g5");
+        regions.get(6).addToAdjacentRegions("g6");
+        regions.get(6).addToAdjacentRegions("g8");
+        regions.get(6).addToAdjacentRegions("g9");
+        regions.get(6).addToAdjacentRegions("g4");
+
+        regions.get(7).addToAdjacentRegions("g7");
+        regions.get(6).addToAdjacentRegions("g6");
+        regions.get(6).addToAdjacentRegions("g11");
+        regions.get(6).addToAdjacentRegions("g9");
+
+        regions.get(6).addToAdjacentRegions("g5");
     }
 
     public int returnRandomIntRange(int max, int min){
