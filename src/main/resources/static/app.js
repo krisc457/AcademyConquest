@@ -37,8 +37,10 @@ function sendGameTurnData() {
 }
 
 function updateGame(message) {
-
-    $("#CountryName").html(message);
+    //Vi splittar upp informationen för att kunna skriva värden på olika ställen
+    var countryContent = message.split("!1");
+    $("#CountryName").html(countryContent[0]);
+    $("#CountryValues").html(countryContent[1]);
 
 }
 
