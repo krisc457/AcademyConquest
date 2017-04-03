@@ -8,6 +8,11 @@ public class Board {
     private List<Region> regions = new ArrayList<>();
 
     public Board(){
+        addRegions();
+        addAdjacentRegions();
+    }
+
+    private void addRegions() {
         regions.add(new Region("g1","Columbia", returnRandomIntRange(10000,1000), returnRandomIntRange(10000,1000)));
         regions.add(new Region("g2","Russian America", returnRandomIntRange(10000,1000), returnRandomIntRange(10000,1000)));
         regions.add(new Region("g3","Northwest Territories", returnRandomIntRange(10000,1000), returnRandomIntRange(10000,1000)));
@@ -46,7 +51,7 @@ public class Board {
         regions.add(new Region("g36","Falkland Isles", returnRandomIntRange(10000,1000), returnRandomIntRange(10000,1000)));
     }
 
-    public void addAdjacentRegions() {
+    private void addAdjacentRegions() {
         regions.get(0).addToAdjacentRegions("g2");
         regions.get(0).addToAdjacentRegions("g3");
         regions.get(0).addToAdjacentRegions("g4");

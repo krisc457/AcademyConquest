@@ -38,6 +38,7 @@ public class GameController {
         int gInt = Integer.parseInt(gID)-1;
             String currLand = gameStuff.get(gInt).getName() + "!1Troops " + gameStuff.get(gInt).getTroops() + "<br>Networth " + gameStuff.get(gInt).getNetworth();
         System.out.println(gID + " Land " + currLand);
+        System.out.println(gameStuff.get(gInt).getAdjacentRegions());
         return new RegionInfo(currLand);
     }
 
