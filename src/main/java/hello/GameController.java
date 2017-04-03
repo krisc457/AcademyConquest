@@ -16,30 +16,18 @@ public class GameController {
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
     List<Region> gameStuff = boardstuff.getRegions();
-    /*@GetMapping("/")
-    public ModelAndView index(){
-        ModelAndView modelmodel = new ModelAndView("index");
-        return modelmodel;
-    }*/
 
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
         ModelAndView mapmodel = new ModelAndView("map");
-
         List<Region> gameStuff = boardstuff.getRegions();
-
         System.out.println("Land" + gameStuff.get(30).getName());
-
         if (session.getAttribute("user") == null) {
             return new ModelAndView("redirect:/index.html");
-
         }
-
         return mapmodel.addObject(gameStuff.get(20).getRegionID());
     }
-
-
 
     @MessageMapping("/endTurn")
     @SendTo("/topic/gameRoom")
@@ -51,7 +39,6 @@ public class GameController {
             String currLand = gameStuff.get(gInt).getName() + "!1Troops " + gameStuff.get(gInt).getTroops() + "<br>Networth " + gameStuff.get(gInt).getNetworth();
         System.out.println(gID + " Land " + currLand);
         return new RegionInfo(currLand);
-
     }
 
 }

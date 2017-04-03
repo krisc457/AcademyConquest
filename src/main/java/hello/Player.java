@@ -9,5 +9,4 @@ public class Player {
     private String majorNation;
     private int[] countriesOwned;
 
-
 }

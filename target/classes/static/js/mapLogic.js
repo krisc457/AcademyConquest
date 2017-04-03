@@ -6,8 +6,6 @@ $(document).ready(function() {
         stompClient.send("/app/endTurn", {}, JSON.stringify({'name': myId}));
     });
 
-    // Bortkommenterat zoomscript nedan
-
     var width = $("#gameMap").width();
     var height = $("#gameMap").height();
 

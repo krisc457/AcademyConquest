@@ -1,6 +1,6 @@
 package hello;
 
-import java.util.TreeSet;
+import java.util.List;
 
 public class Region {
 
@@ -8,6 +8,7 @@ public class Region {
     private String name;
     private long troops;
     private long networth;
+    private List<String> adjacentRegions;
 
     public String getRegionID() {
         return regionID;
@@ -54,6 +55,15 @@ public class Region {
         this.name = name;
         this.troops = troops;
         this.networth = networth;
+        this.adjacentRegions = adjacentRegions;
+    }
+
+    public List<String> getAdjacentRegions() {
+        return adjacentRegions;
+    }
+
+    public void addToAdjacentRegions(String addRegionString) {
+        this.adjacentRegions.add(addRegionString);
     }
 
     /*
