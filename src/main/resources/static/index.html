@@ -5,23 +5,26 @@
     <link rel="stylesheet" href="css.css">
     <meta charset="UTF-8"/>
     <title>Login</title>
+    <!--<link rel="stylesheet" href="cssReset.css">-->
+    <link rel="stylesheet" href="css.css">
+    <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet">
 </head>
-<body>
-<div>Java Conquest</div>
+<body class="signin">
+<div class="signin"><h1 class="logo">Java Conquest</h1></div>
 <img src="logo.jpg" height="218" width="180"/>
 
-<h1>Welcome!</h1>
+<h1 class="signin">Welcome!</h1>
 <div>
     <form id="formIndex" action="login" method="POST">
-        Username: <input name="Username" type="text"/>
-        Password: <input name="Password" type="password"/>
+        <p class="logo">Username: <input name="Username" type="text"/>
+        Password: <input name="Password" type="password"/></p>
         <input type="submit" value="Login"/>
     </form>
 </div>
 <div>
-    <h3>Not a user? Sign up</h3>
+    <h3 class="logo">Not a user?</h3>
     <a href="/newUser">
-       <img src="signup.jpg" height="100" width="80"/>
+        <h3 class="logo">Sign up!</h3>
     </a>
 </div>
 </body>
