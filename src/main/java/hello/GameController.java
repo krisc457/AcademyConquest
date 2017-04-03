@@ -16,6 +16,7 @@ public class GameController {
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
     List<Region> gameStuff = boardstuff.getRegions();
+    MajorNation majorNation = new MajorNation();
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
@@ -33,13 +34,13 @@ public class GameController {
         String gID = regionIdObject.getName().substring(1);
         //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp texten
         int gInt = Integer.parseInt(gID)-1;
-        String currLand = gameStuff.get(gInt).getName() + "!1Troops " + gameStuff.get(gInt).getTroops() + "<br>Networth " + gameStuff.get(gInt).getNetworth();
-//        System.out.println(gID + " Land " + currLand);
+        String currLand = gameStuff.get(gInt).getName() + " Troops " + gameStuff.get(gInt).getTroops() + " <br>Networth " + gameStuff.get(gInt).getNetworth();
+        System.out.println(gID + " Land " + currLand);
 
         if (gameStuff.get(gInt).getAdjacentRegions().contains("g1")) {
             System.out.println("Du kan attackera " + gameStuff.get(gInt).getName() + "!");
         }
-        System.out.println(gameStuff.get(gInt).getAdjacentRegions());
+        System.out.println(gameStuff.get(gInt).getName() + " gränsar till " + gameStuff.get(gInt).getAdjacentRegions());
         return new RegionInfo(currLand);
     }
 
