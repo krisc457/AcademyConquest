@@ -30,24 +30,6 @@ public class GameController {
         return mapmodel.addObject(gameStuff.get(20).getRegionID());
     }
 
-
-
-//    @MessageMapping("/endTurn")
-//    @SendTo("/topic/gameRoom")
-//    public RegionInfo region(SelectedRegionObject regionIdObject) throws Exception {
-//        String gID = regionIdObject.getName().substring(1);
-//        //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp texten
-//        int gInt = Integer.parseInt(gID)-1;
-//        String currLand = gameStuff.get(gInt).getName() + "!1Troops " + gameStuff.get(gInt).getTroops() + "<br>Networth " + gameStuff.get(gInt).getNetworth();
-//        for (String adjacent : gameStuff.get(gInt).getAdjacentRegions()) {
-//            currLand += "!1" + adjacent;
-//        }
-//        currLand += "!1" + regionIdObject.getName();
-//        return new RegionInfo(currLand);
-//    }
-//
-//}
-
     @MessageMapping("/endTurn")
     @SendTo("/topic/gameRoom")
     public RegionInfo region(SelectedRegionObject regionIdObject) throws Exception {
