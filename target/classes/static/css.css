@@ -37,6 +37,16 @@ path:hover:not(.active) {
   cursor: pointer;
 }
 
+.adjacent {
+  /*  */
+}
+
+.chosen {
+  animation: chosenShow 1s infinite;
+  animation-fill-mode:forwards;
+  animation-timing-function: ease-in-out;
+}
+
 .active {
   opacity: 0.5;
   mix-blend-mode: multiply;
@@ -77,6 +87,12 @@ path:hover:not(.active) {
   cursor: pointer;
 }
 
+.others {
+  opacity: 0.85 !important;
+  fill: black !important;
+  stroke: black !important;
+}
+
 @keyframes opacityShow {
   0% {
     opacity: 0;
@@ -92,6 +108,18 @@ path:hover:not(.active) {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes chosenShow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

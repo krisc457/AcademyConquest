@@ -34,12 +34,10 @@ public class GameController {
         //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp texten
         int gInt = Integer.parseInt(gID)-1;
         String currLand = gameStuff.get(gInt).getName() + "!1Troops " + gameStuff.get(gInt).getTroops() + "<br>Networth " + gameStuff.get(gInt).getNetworth();
-//        System.out.println(gID + " Land " + currLand);
-
-        if (gameStuff.get(gInt).getAdjacentRegions().contains("g1")) {
-            System.out.println("Du kan attackera " + gameStuff.get(gInt).getName() + "!");
+        for (String adjacent : gameStuff.get(gInt).getAdjacentRegions()) {
+            currLand += "!1" + adjacent;
         }
-        System.out.println(gameStuff.get(gInt).getAdjacentRegions());
+        currLand += "!1" + regionIdObject.getName();
         return new RegionInfo(currLand);
     }
 

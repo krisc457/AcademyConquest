@@ -41,7 +41,14 @@ function updateGame(message) {
     var countryContent = message.split("!1");
     $("#CountryName").html(countryContent[0]);
     $("#CountryValues").html(countryContent[1]);
-
+    $(".adjacent").removeClass("adjacent");
+    $(".chosen").removeClass("chosen");
+    $(".others").removeClass("others");
+    for(var i=2; i<countryContent.length-1; i++){
+        $("#" + countryContent[i] + " > g > a > path").addClass("adjacent");
+    }
+    $("#" + countryContent[countryContent.length-1] + " > g > a > path").addClass("chosen");
+    $("path:not(.adjacent):not(.chosen)").addClass("others");
 }
 
 $(function () {

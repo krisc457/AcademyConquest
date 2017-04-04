@@ -105,7 +105,7 @@ public class Board {
         regions.add(new Region("g90", "Angola", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g91", "Northern Rhodesia", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g92", "Mozambique", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
-        regions.add(new Region("g93", "Finns ingen!!!", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
+        regions.add(new Region("g93", "Hawaii", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g94", "Madagascar", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g95", "Southern Rhodesia", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g96", "Bechuanaland", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
@@ -178,7 +178,6 @@ public class Board {
         regions.add(new Region("g163", "New Zealand", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g164", "Nova Zembla", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g165", "Greenland", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
-        regions.add(new Region("g166", "Hawaii", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
     }
 
     private void addAdjacentRegions() {
