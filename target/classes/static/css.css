@@ -1,23 +1,42 @@
+@font-face {
+    font-family: '18thCentury';
+    src: url('18thCentury.ttf'); /* IE9 Compat Modes */
+    src: url('18thCentury.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
 .navbar {
     display: none;
 }
 
 #gameMap {
-  width: 5027px;
-  height: 2453px;
-  background-image: url("images/baseMap.jpg");
-  background-size: 100% 100%;
+    width: 5027px;
+    height: 2453px;
+    background-image: url("images/baseMap.jpg");
+    background-size: 100% 100%;
+}
+
+#loginbody {
+    background: url(images/logMap.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #wrapperlogin {
     text-align: center;
     font-family: 'Delius Unicase', cursive;
     vertical-align: middle;
-    transform: translateY(30%);
+    transform: translateY(20%);
+    background: rgba(0, 0, 0, 0.2);
+    padding-top: 2em;
+    padding-bottom: 2em
 }
 
 #startHeading{
-    font-size: 3em;
+    font-family: '18thCentury', serif;
+    font-size: 5em;
+    text-shadow: 1px 1px #fff;
     margin-bottom: 20px;
 }
 
@@ -47,6 +66,8 @@ input {
 label {
     display: inline-block;
     width: 10px;
+    text-shadow: 1px 1px #fff;
+    font-weight: bold;
 }
 
 svg {
