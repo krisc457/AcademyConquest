@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="cssReset.css">
+    <link rel="stylesheet" href="css.css">
     <meta charset="UTF-8"/>
-    <link href="/cssfil.css" rel="stylesheet" type="text/css"/>
-    <title>Sign up!</title>
+    <title>Signup</title>
+    <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet">
 </head>
-<body>
+
+
+
+
+<body id="divuser">
 <h1>Sign Up for Free</h1>
-<div class="signup">
-    <form action="/newUser" method="post" th:object="${user}" >
-        Username: <input type="text" th:field="*{username}"/>
+<div class="divuser"><p><h1>Sign Up for Java Conquest</h1></p>
+    <p><img src="logo.png" height="300" width="300"/></p>
+    <form id="formIndex" action="/newUser" method="post" th:object="${user}" >
+        <p>Username: <input type="text" th:field="*{username}"/>
         Password: <input type="password" th:field="*{password}"/>
-        <input class="buttons" type="submit" value="Get Started"/>
+        <input class="buttons" type="submit" value="Get Started"/></p>
     </form>
 </div>
 

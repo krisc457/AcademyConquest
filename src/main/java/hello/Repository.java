@@ -11,6 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Component
+
+/**
+ * Created by Bodsten on 2017-03-30.
+ */
+
 public class Repository implements IUser {
 
     @Autowired

@@ -13,6 +13,11 @@ import javax.validation.Valid;
 
 
 @Controller
+
+/**
+ * Created by Bodsten on 2017-03-30.
+ */
+
 public class loginController {
     @Autowired
     IUser iUser;

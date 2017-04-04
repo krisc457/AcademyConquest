@@ -127,14 +127,16 @@ path:hover:not(.active) {
   to { -o-transform:scale(0.8) }
 }
 
-.logo {
-  font-family: 'Delius Unicase', cursive;
-  align-content: center;
+.divuser {
+  text-align: center;
+
 }
 
-.signin {
-  align-content: center;
+#divuser {
+  font-family: 'Delius Unicase', cursive;
+  vertical-align: middle;
 }
+
 
 a:link {
   text-decoration: none;

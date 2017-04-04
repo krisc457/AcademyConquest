@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <!--<link rel="stylesheet" href="cssReset.css">-->
+    <link rel="stylesheet" href="cssReset.css">
     <link rel="stylesheet" href="css.css">
     <meta charset="UTF-8"/>
     <title>Login</title>
-    <!--<link rel="stylesheet" href="cssReset.css">-->
-    <link rel="stylesheet" href="css.css">
     <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet">
 </head>
-<body class="signin">
-<div class="signin"><h1 class="logo">Java Conquest</h1></div>
-<img src="logo.jpg" height="218" width="180"/>
 
-<h1 class="signin">Welcome!</h1>
-<div>
+<body id="divuser">
+<div class="divuser"><p><h1>Java Conquest</h1></p>
+    <p><img src="logo.png" height="300" width="300"/></p>
+
+<p><h1>Welcome!</h1></p>
+
     <form id="formIndex" action="login" method="POST">
-        <p class="logo">Username: <input name="Username" type="text"/>
-        Password: <input name="Password" type="password"/></p>
-        <input type="submit" value="Login"/>
+        <p>Username: <input name="Username" type="text"/>
+        Password: <input name="Password" type="password"/>
+        <input type="submit" value="Login"/></p>
     </form>
-</div>
-<div>
-    <h3 class="logo">Not a user?</h3>
+
+    <p><h3>Not a user?</h3></p>
     <a href="/newUser">
         <h3 class="logo">Sign up!</h3>
     </a>
