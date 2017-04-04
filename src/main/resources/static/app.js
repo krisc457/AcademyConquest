@@ -24,6 +24,7 @@ $(document).ready(function(){
     });
 });
 
+/*
 function disconnect() {
     if (stompClient != null) {
         stompClient.disconnect();
@@ -31,6 +32,7 @@ function disconnect() {
     setConnected(false);
     console.log("Disconnected");
 }
+*/
 
 function sendGameTurnData() {
     stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));

@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <!--<link rel="stylesheet" href="cssReset.css">-->
+    <link rel="stylesheet" href="cssReset.css">
     <link rel="stylesheet" href="css.css">
     <meta charset="UTF-8"/>
     <title>Login</title>
-    <!--<link rel="stylesheet" href="cssReset.css">-->
-    <link rel="stylesheet" href="css.css">
     <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet">
 </head>
-<body class="signin">
-<div class="signin"><h1 class="logo">Java Conquest</h1></div>
-<img src="logo.jpg" height="218" width="180"/>
 
-<h1 class="signin">Welcome!</h1>
-<div>
-    <form id="formIndex" action="login" method="POST">
-        <p class="logo">Username: <input name="Username" type="text"/>
-        Password: <input name="Password" type="password"/></p>
-        <input type="submit" value="Login"/>
-    </form>
-</div>
-<div>
-    <h3 class="logo">Not a user?</h3>
-    <a href="/newUser">
-        <h3 class="logo">Sign up!</h3>
-    </a>
-</div>
+<body id="loginbody">
+<main id="wrapperlogin">
+    <header>
+        <h1 id="startHeading">Java Conquest</h1>
+        <img id="startGameLogo" src="logo.png"/>
+        <h2>Welcome!</h2>
+    </header>
+    <div id="formDiv">
+        <form id="formIndex" action="login" method="POST">
+            <label>Username:</label><input name="Username" type="text"/><br>
+            <label>Password:</label><input name="Password" type="password"/><br>
+            <input id="logSubmit" type="submit" value="Login"/>
+        </form>
+        <p>Not a user?</p>
+        <a href="/newUser">
+            <h3 class="logo">Sign up!</h3>
+        </a>
+    </div>
+
+
+</main>
 </body>
 </html>

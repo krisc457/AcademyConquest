@@ -16,13 +16,14 @@ public class GameController {
     List<Region> stuff = new ArrayList();
     Board boardstuff = new Board();
     List<Region> gameStuff = boardstuff.getRegions();
+    MajorNation majorNation = new MajorNation();
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
         ModelAndView mapmodel = new ModelAndView("map");
         List<Region> gameStuff = boardstuff.getRegions();
         if (session.getAttribute("user") == null) {
-            return new ModelAndView("redirect:/index.html");
+            return new ModelAndView("redirect://index.html");
         }
         return mapmodel.addObject(gameStuff.get(20).getRegionID());
     }
