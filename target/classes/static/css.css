@@ -1,6 +1,6 @@
-.navbar {
+/*.navbar {*/
   /*display: none;*/
-}
+/*}*/
 
 #gameMap {
   width: 5027px;
@@ -21,9 +21,9 @@ path {
   stroke-width: 5px;
 }
 
-path:hover:not(.active) {
-  animation: opacityShow 0.25s;
-  animation-fill-mode:forwards;
+.active:hover:not(.others) {
+  animation: opacityShowActive 0.25s;
+  animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   cursor: pointer;
@@ -35,6 +35,16 @@ path:hover:not(.active) {
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   cursor: pointer;
+}
+
+.adjacent {
+  /*  */
+}
+
+.chosen {
+  animation: chosenShow 1s infinite;
+  animation-fill-mode:forwards;
+  animation-timing-function: ease-in-out;
 }
 
 .active {
@@ -77,6 +87,12 @@ path:hover:not(.active) {
   cursor: pointer;
 }
 
+.others {
+  opacity: 0.85 !important;
+  fill: black !important;
+  stroke: black !important;
+}
+
 @keyframes opacityShow {
   0% {
     opacity: 0;
@@ -95,7 +111,22 @@ path:hover:not(.active) {
   }
 }
 
-/* CSS kod för zoom kod nedan */
+@keyframes chosenShow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.others:hover {
+  opacity: 1 !important;
+  cursor: pointer;
+}
 
 @keyframes zoomIn {
   from { transform:scale(1); transform-origin: 0px 0px; }

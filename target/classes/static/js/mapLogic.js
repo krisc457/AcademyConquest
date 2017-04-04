@@ -1,8 +1,14 @@
 $(document).ready(function() {
 
     $('g > a').click(function () {
-        var myId = $(this).parent().parent().attr('id');
-        stompClient.send("/app/endTurn", {}, JSON.stringify({'name': myId}));
+        if($(this).children().hasClass("chosen")) {
+            $(".adjacent").removeClass("adjacent");
+            $(".chosen").removeClass("chosen");
+            $(".others").removeClass("others");
+        } else {
+            var myId = $(this).parent().parent().attr('id');
+            stompClient.send("/app/endTurn", {}, JSON.stringify({'name': myId}));
+        }
     });
 
     var width = $("#gameMap").width();
@@ -16,12 +22,12 @@ $(document).ready(function() {
         $("#gameMap").css("transform-origin", 0 + "px" + scrolledY + "px");
         $("#gameMap").css("animation", "zoomIn 0.5s");
         /*
-        setTimeout(function(){
-            $("#gameMap").css("width", newWidth + "px");
-            $("#gameMap").css("height", newHeight + "px");
-            window.scrollTo(scrolledX * 1.25, scrolledY * 1.26);
-        }, 500);
-        */
+         setTimeout(function(){
+         $("#gameMap").css("width", newWidth + "px");
+         $("#gameMap").css("height", newHeight + "px");
+         window.scrollTo(scrolledX * 1.25, scrolledY * 1.26);
+         }, 500);
+         */
     });
 
     $("#zoomOut").click(function(e){

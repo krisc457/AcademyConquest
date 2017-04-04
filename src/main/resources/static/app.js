@@ -36,21 +36,57 @@ function sendGameTurnData() {
     stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
+// function updateGame(message) {
+//     //Vi splittar upp informationen för att kunna skriva värden på olika ställen
+//     var countryContent = message.split("!1");
+//     $("#CountryName").html(countryContent[0]);
+//     $("#CountryValues").html(countryContent[1]);
+//     $(".adjacent").removeClass("adjacent");
+//     $(".chosen").removeClass("chosen");
+//     $(".others").removeClass("others");
+//     for(var i=2; i<countryContent.length-1; i++){
+//         $("#" + countryContent[i] + " > g > a > path").addClass("adjacent");
+//     }
+//     $("#" + countryContent[countryContent.length-1] + " > g > a > path").addClass("chosen");
+//     $("path:not(.adjacent):not(.chosen)").addClass("others");
+// }
+
 function updateGame(message) {
-    //Vi splittar upp informationen för att kunna skriva värden på olika ställen
-    var countryContent = message.split("!1");
-    $("#CountryName").html(countryContent[0]);
-    $("#CountryValues").html(countryContent[1]);
+    // Vi splittar upp informationen för att kunna skriva värden på olika ställen.
+    //     Patrik splittas med "!patrik" och "!1". Schmidt splittas med "!schmidt" och "!2". Cox med "!cox" och "!3".
+
+    var info = message.split("!split")
+    console.log(info);
+    var rikuInfo = info[0];
+    var rikuInfoRätt = info[0].split("!1");
+    console.log(rikuInfo);
+    console.log(rikuInfoRätt);
+    var schmidtInfo = info[1];
+    var schmidtInfoRätt = info[1].split("!2");
+    console.log(schmidtInfo);
+    console.log(schmidtInfoRätt);
+    var coxInfo = info[2];
+    var coxInfoRätt = info[2].split("!3");
+    console.log(coxInfo);
+    console.log(coxInfoRätt);
+
+    $("#CountryName").html(rikuInfoRätt[0]);
+    $("#CountryValues").html(rikuInfoRätt[1]);
+
+    $(".adjacent").removeClass("adjacent");
+    $(".chosen").removeClass("chosen");
+    $(".others").removeClass("others");
+    for(var i=1; i<coxInfoRätt.length-1; i++){
+        $("#" + coxInfoRätt[i] + " > g > a > path").addClass("adjacent");
+    }
+    $("#" + coxInfoRätt[coxInfoRätt.length-1] + " > g > a > path").addClass("chosen");
+    $("path:not(.adjacent):not(.chosen)").addClass("others");
+
     var abc = "";
-    for (var i=2; i<countryContent.length; i++) {
-        abc +=  countryContent[i]+"<br>";
+    for (var i=1; i<schmidtInfoRätt.length; i++) {
+        abc +=  schmidtInfoRätt[i]+"<br>";
     }
     $("#ifAttackIsPossible").append().html("<h4>Du kan attackera från:</h4><p>" + abc + "</p>");
-    /*$("#ifAttackIsPossible").html(abc);*/
-}
-
-function ifAdjacent () {
-    
 }
 
 $(function () {
