@@ -1,5 +1,5 @@
 .navbar {
-  display: none;
+  /*display: none;*/
 }
 
 #gameMap {
@@ -143,4 +143,12 @@ path:hover:not(.active) {
 a:link {
   text-decoration: none;
   color: #f7b71a;
+}
+
+#ifAttackIsPossible {
+  float: left;
+}
+
+.modal-footer > p {
+  text-align: left;
 }

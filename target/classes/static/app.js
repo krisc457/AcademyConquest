@@ -41,7 +41,16 @@ function updateGame(message) {
     var countryContent = message.split("!1");
     $("#CountryName").html(countryContent[0]);
     $("#CountryValues").html(countryContent[1]);
+    var abc = "";
+    for (var i=2; i<countryContent.length; i++) {
+        abc +=  countryContent[i]+"<br>";
+    }
+    $("#ifAttackIsPossible").append().html("<h4>Du kan attackera från:</h4><p>" + abc + "</p>");
+    /*$("#ifAttackIsPossible").html(abc);*/
+}
 
+function ifAdjacent () {
+    
 }
 
 $(function () {
