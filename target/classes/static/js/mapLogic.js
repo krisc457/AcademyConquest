@@ -1,8 +1,14 @@
 $(document).ready(function() {
 
     $('g > a').click(function () {
-        var myId = $(this).parent().parent().attr('id');
-        stompClient.send("/app/endTurn", {}, JSON.stringify({'name': myId}));
+        if($(this).children().hasClass("chosen")) {
+            $(".adjacent").removeClass("adjacent");
+            $(".chosen").removeClass("chosen");
+            $(".others").removeClass("others");
+        } else {
+            var myId = $(this).parent().parent().attr('id');
+            stompClient.send("/app/endTurn", {}, JSON.stringify({'name': myId}));
+        }
     });
 
     var width = $("#gameMap").width();
