@@ -9,20 +9,20 @@
 </head>
 
 
-
-
-<body id="divuser">
-<h1>Sign Up for Free</h1>
-<div class="divuser"><p><h1>Java Conquest</h1></p>
-    <p><img src="logo.png" height="300" width="300"/></p>
-    <form id="formIndex" action="/newUser" method="post" th:object="${user}" >
-        <p>Username: <input type="text" th:field="*{username}"/>
-        Password: <input type="password" th:field="*{password}"/>
-        <input class="buttons" type="submit" value="Get Started"/></p>
-    </form>
+<body id="loginbody">
+<div id="wrapperlogin">
+    <header>
+        <h1 id="startHeading">Sign up for free</h1>
+        <img id="startGameLogo" src="logo.png"/>
+        <h2>Java Conquest</h2>
+    </header>
+    <div id="formDiv">
+        <form id="formIndex" action="/newUser" method="post" th:object="${user}">
+            <label>Username:</label><input type="text" th:field="*{username}"/><br>
+            <label>Password:</label><input type="password" th:field="*{password}"/><br>
+            <input id="logSubmit" class="buttons" type="submit" value="Get Started"/>
+        </form>
+    </div>
 </div>
-
-
-
 </body>
 </html>

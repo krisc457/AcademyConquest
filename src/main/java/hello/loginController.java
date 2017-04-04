@@ -37,7 +37,7 @@ public class loginController {
     @GetMapping("/game")
     public String form(HttpSession session) {
         if (session.getAttribute("username") == null) {
-            return "redirect:/index.html";
+            return "redirect:/DELETETHIS.html";
         }
         return "game";
     }

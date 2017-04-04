@@ -8,22 +8,27 @@
     <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet">
 </head>
 
-<body id="divuser">
-<div class="divuser"><p><h1>Java Conquest</h1></p>
-    <p><img src="images/logo.png" height="300" width="300"/></p>
 
-<p><h1>Welcome!</h1></p>
+<body id="loginbody">
+<main id="wrapperlogin">
+    <header>
+        <h1 id="startHeading">Java Conquest</h1>
+        <img id="startGameLogo" src="images/logo.png"/>
+        <h2>Welcome!</h2>
+    </header>
+    <div id="formDiv">
+        <form id="formIndex" action="login" method="POST">
+            <label>Username:</label><input name="Username" type="text"/><br>
+            <label>Password:</label><input name="Password" type="password"/><br>
+            <input id="logSubmit" type="submit" value="Login"/>
+        </form>
+        <p>Not a user?</p>
+        <a href="/newUser">
+            <h3 class="logo">Sign up!</h3>
+        </a>
+    </div>
 
-    <form id="formIndex" action="login" method="POST">
-        <p>Username: <input name="Username" type="text"/>
-        Password: <input name="Password" type="password"/>
-        <input type="submit" value="Login"/></p>
-    </form>
 
-    <p><h3>Not a user?</h3></p>
-    <a href="/newUser">
-        <h3 class="logo">Sign up!</h3>
-    </a>
-</div>
+</main>
 </body>
 </html>
