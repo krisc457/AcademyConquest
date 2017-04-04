@@ -3,10 +3,10 @@
 }
 
 #gameMap {
-    width: 5027px;
-    height: 2453px;
-    background-image: url("baseMap.jpg");
-    background-size: 100% 100%;
+  width: 5027px;
+  height: 2453px;
+  background-image: url("images/baseMap.jpg");
+  background-size: 100% 100%;
 }
 
 #wrapperlogin {
