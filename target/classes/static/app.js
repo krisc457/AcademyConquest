@@ -29,39 +29,28 @@ $(document).ready(function(){
 });
 
 /*
-function disconnect() {
-    if (stompClient != null) {
-        stompClient.disconnect();
-    }
-    setConnected(false);
-    console.log("Disconnected");
-}
-*/
+ function disconnect() {
+ if (stompClient != null) {
+ stompClient.disconnect();
+ }
+ setConnected(false);
+ console.log("Disconnected");
+ }
+ */
 
 /*
-function sendGameTurnData() {
-    stompClient.send("/app/makeMove", {}, JSON.stringify({'name': $("#name").val()}));
-}
-*/
+ function sendGameTurnData() {
+ stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
+ }
+ */
 
 function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
     var currentLand = currentLand.split("!1");
     var namesOfAttackRegions = namesOfAttackRegions.split("!2");
     var idsForAdjacentRegions = idsForAdjacentRegions.split("!3");
 
-<<<<<<< HEAD
-    var info = message.split("!split")
-    var regionInfoSplit = info[0].split("!1");
-    var namesOfAttackRegionsSplit = info[1].split("!2");
-    var adjacentRegionIdsSplit = info[2].split("!3");
-    console.log(namesOfAttackRegionsSplit);
-
-    $("#CountryName").html(regionInfoSplit[0]);
-    $("#CountryValues").html(regionInfoSplit[1]);
-=======
     $("#CountryName").html(currentLand[0]);
     $("#CountryValues").html(currentLand[1]);
->>>>>>> 8d7f43d064e9557398fb583bd1ef52d85327aecf
 
     $(".adjacent").removeClass("adjacent");
     $(".chosen").removeClass("chosen");
@@ -80,12 +69,12 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
 }
 
 /*
-$(function () {
-    $("form").on('submit', function (e) {
-        e.preventDefault();
-    });
-    $( "#connect" ).click(function() { connect(); });
-    $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#endTurn" ).click(function() { sendGameTurnData(); });
-});
-*/
+ $(function () {
+ $("form").on('submit', function (e) {
+ e.preventDefault();
+ });
+ $( "#connect" ).click(function() { connect(); });
+ $( "#disconnect" ).click(function() { disconnect(); });
+ $( "#endTurn" ).click(function() { sendGameTurnData(); });
+ });
+ */

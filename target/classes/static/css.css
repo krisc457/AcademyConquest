@@ -4,13 +4,10 @@
     src: url('18thCentury.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
-<<<<<<< HEAD
-=======
 a:link {
     text-shadow: 0px 0px 0px white !important;
 }
 
->>>>>>> 8d7f43d064e9557398fb583bd1ef52d85327aecf
 #gameMap {
     width: 5027px;
     height: 2453px;
@@ -93,14 +90,6 @@ path:hover:not(.active):not(.others) {
     cursor: pointer;
 }
 
-path:hover:not(active):not(.others) {
-  animation: opacityShowActive 0.25s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: 1;
-  cursor: pointer;
-}
-
 .active:hover:not(.others) {
     animation: opacityShowActive 0.25s;
     animation-fill-mode: forwards;
@@ -109,23 +98,18 @@ path:hover:not(active):not(.others) {
     cursor: pointer;
 }
 
-<<<<<<< HEAD
-.active:hover {
-    animation: opacityShowActive 0.25s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
-    cursor: pointer;
-=======
 .adjacent {
     /*  */
->>>>>>> 8d7f43d064e9557398fb583bd1ef52d85327aecf
 }
 
 .chosen {
     animation: chosenShow 1s infinite;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
+}
+
+.adjacent {
+    /*  */
 }
 
 .chosen {
@@ -174,11 +158,6 @@ path:hover:not(active):not(.others) {
     cursor: pointer;
 }
 
-.others:hover {
-    opacity: 1 !important;
-    cursor: pointer;
-}
-
 .others {
     opacity: 0.85;
     fill: black;
@@ -187,6 +166,11 @@ path:hover:not(active):not(.others) {
 
 .others:hover {
     opacity: 1;
+    cursor: pointer;
+}
+
+.others:hover {
+    opacity: 1 !important;
     cursor: pointer;
 }
 
@@ -230,6 +214,11 @@ path:hover:not(active):not(.others) {
     100% {
         opacity: 0;
     }
+}
+
+.others:hover {
+    opacity: 1 !important;
+    cursor: pointer;
 }
 
 @keyframes zoomIn {

@@ -83,9 +83,7 @@ public class GameController {
         for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
             idsForAdjacentRegions +="!3"+ adjacent;
         }
-
         idsForAdjacentRegions +="!3"+ regionIdObject.getName();
-
         return new RegionInfo(currentLand, namesOfAttackRegions, idsForAdjacentRegions);
     }
 }
