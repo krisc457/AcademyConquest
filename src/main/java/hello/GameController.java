@@ -21,6 +21,11 @@ public class GameController {
     MajorNation germany = new MajorNation("GERMANY");
     MajorNation japan = new MajorNation("JAPAN");
     MajorNation russia = new MajorNation("RUSSIA");
+    List<MajorNation> majorNations = new ArrayList<>();
+
+    public List<MajorNation> getMajorNations() {
+        return majorNations;
+    }
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
@@ -41,7 +46,6 @@ public class GameController {
         String namesOfAttackRegions = "";
         String idsForAdjacentRegions = "";
         String currentLand = activeGameBoard.get(gInt).getName() + " !1Troops " + activeGameBoard.get(gInt).getTroops() + " <br>Networth " + activeGameBoard.get(gInt).getNetworth();
-
 
         for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
             idsForAdjacentRegions +="!3"+ adjacent;

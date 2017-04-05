@@ -66,6 +66,9 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
         attackRegionOutput += "<button type='button' class='btn btn-default attackFrom' data-dismiss='modal' value='" + namesOfAttackRegions[i] + "'>" + namesOfAttackRegions[i] + "</button><br>";
     }
     $("#ifAttackIsPossible").append().html("<h4>Du kan attackera från:</h4>" + attackRegionOutput);
+    $(".attackFrom").click(function () {
+        stompClient.send("/app/attack", {}, JSON.stringify({'name':idsForAdjacentRegions[idsForAdjacentRegions.length-1]}));
+    });
 }
 
 /*
