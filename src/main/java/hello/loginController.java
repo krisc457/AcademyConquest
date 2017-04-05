@@ -13,6 +13,11 @@ import javax.validation.Valid;
 
 
 @Controller
+
+/**
+ * Created by Bodsten on 2017-03-30.
+ */
+
 public class loginController {
     @Autowired
     IUser iUser;
@@ -28,15 +33,6 @@ public class loginController {
             session.setAttribute("user", login);
         return new ModelAndView("/map").addObject("UserName",Username);
     }
-
-    @GetMapping("/game")
-    public String form(HttpSession session) {
-        if (session.getAttribute("username") == null) {
-            return "redirect:/index.html";
-        }
-        return "game";
-    }
-
 
     @GetMapping("/newUser")
     public ModelAndView form(String username, String password) {

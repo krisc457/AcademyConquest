@@ -105,7 +105,7 @@ public class Board {
         regions.add(new Region("g90", "Angola", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g91", "Northern Rhodesia", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g92", "Mozambique", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
-        regions.add(new Region("g93", "Finns ingen!!!", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
+        regions.add(new Region("g93", "Hawaii", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g94", "Madagascar", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g95", "Southern Rhodesia", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g96", "Bechuanaland", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
@@ -178,7 +178,6 @@ public class Board {
         regions.add(new Region("g163", "New Zealand", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g164", "Nova Zembla", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
         regions.add(new Region("g165", "Greenland", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
-        regions.add(new Region("g166", "Hawaii", returnRandomIntRange(10000, 1000), returnRandomIntRange(10000, 1000)));
     }
 
     private void addAdjacentRegions() {
@@ -334,6 +333,20 @@ public class Board {
         regions.get(41).addToAdjacentRegions("g41");
         regions.get(41).addToAdjacentRegions("g47");
         regions.get(41).addToAdjacentRegions("g43");
+
+        regions.get(42).addToAdjacentRegions("g44");
+        regions.get(42).addToAdjacentRegions("g42");
+        regions.get(42).addToAdjacentRegions("g41");
+        regions.get(42).addToAdjacentRegions("g99");
+        regions.get(42).addToAdjacentRegions("g45");
+
+        regions.get(43).addToAdjacentRegions("g43");
+        regions.get(43).addToAdjacentRegions("g99");
+        regions.get(43).addToAdjacentRegions("g112");
+        regions.get(43).addToAdjacentRegions("g113");
+        regions.get(43).addToAdjacentRegions("g62");
+        regions.get(43).addToAdjacentRegions("g61");
+        regions.get(43).addToAdjacentRegions("g45");
 
         regions.get(44).addToAdjacentRegions("g44");
         regions.get(44).addToAdjacentRegions("g46");

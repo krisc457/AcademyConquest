@@ -38,32 +38,29 @@ function sendGameTurnData() {
 
 function updateGame(message) {
     // Vi splittar upp informationen för att kunna skriva värden på olika ställen.
-    //     Patrik splittas med "!patrik" och "!1". Schmidt splittas med "!schmidt" och "!2". Cox med "!cox" och "!3".
+    // Strängen message splittas med "!split" och "!1" och "!2" och "!3".
 
     var info = message.split("!split")
-    var rikuInfo = info[0];
-    var rikuInfoRätt = info[0].split("!1");
-    var schmidtInfo = info[1];
-    var schmidtInfoRätt = info[1].split("!2");
-    var coxInfo = info[2];
-    var coxInfoRätt = info[2].split("!3");
-    
+    var regionInfoSplit = info[0].split("!1");
+    var namesOfAttackRegionsSplit = info[1].split("!2");
+    var adjacentRegionIdsSplit = info[2].split("!3");
 
-    $("#CountryName").html(rikuInfoRätt[0]);
-    $("#CountryValues").html(rikuInfoRätt[1]);
+
+    $("#CountryName").html(regionInfoSplit[0]);
+    $("#CountryValues").html(regionInfoSplit[1]);
 
     $(".adjacent").removeClass("adjacent");
     $(".chosen").removeClass("chosen");
     $(".others").removeClass("others");
-    for(var i=1; i<coxInfoRätt.length-1; i++){
-        $("#" + coxInfoRätt[i] + " > g > a > path").addClass("adjacent");
+    for(var i=1; i<adjacentRegionIdsSplit.length-1; i++){
+        $("#" + adjacentRegionIdsSplit[i] + " > g > a > path").addClass("adjacent");
     }
-    $("#" + coxInfoRätt[coxInfoRätt.length-1] + " > g > a > path").addClass("chosen");
+    $("#" + adjacentRegionIdsSplit[adjacentRegionIdsSplit.length-1] + " > g > a > path").addClass("chosen");
     $("path:not(.adjacent):not(.chosen)").addClass("others");
 
     var abc = "";
-    for (var i=1; i<schmidtInfoRätt.length; i++) {
-        abc +=  schmidtInfoRätt[i]+"<br>";
+    for (var i=1; i<namesOfAttackRegionsSplit.length; i++) {
+        abc +=  namesOfAttackRegionsSplit[i]+"<br>";
     }
     $("#ifAttackIsPossible").append().html("<h4>Du kan attackera från:</h4><p>" + abc + "</p>");
 }

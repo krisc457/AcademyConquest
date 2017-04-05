@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="cssReset.css">
+    <link rel="stylesheet" href="css.css">
     <meta charset="UTF-8"/>
-    <link href="/cssfil.css" rel="stylesheet" type="text/css"/>
-    <title>Sign up!</title>
+    <title>Signup</title>
+    <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet">
 </head>
-<body>
-<h1>Sign Up for Free</h1>
-<div class="signup">
-    <form action="/newUser" method="post" th:object="${user}" >
-        Username: <input type="text" th:field="*{username}"/>
-        Password: <input type="password" th:field="*{password}"/>
-        <input class="buttons" type="submit" value="Get Started"/>
-    </form>
+<body id="loginbody">
+<div id="wrapperlogin">
+    <header>
+        <h1 id="startHeading">Sign up for free</h1>
+        <img id="startGameLogo" src="images/logo.png"/>
+        <h2>Java Conquest</h2>
+    </header>
+    <div id="formDiv">
+        <form id="formIndex" action="/newUser" method="post" th:object="${user}">
+            <label>Username:</label><input type="text" th:field="*{username}"/><br>
+            <label>Password:</label><input type="password" th:field="*{password}"/><br>
+            <input id="logSubmit" class="buttons" type="submit" value="Get Started"/>
+        </form>
+    </div>
 </div>
-
-
-
 </body>
 </html>
