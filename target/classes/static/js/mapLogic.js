@@ -11,6 +11,12 @@ $(document).ready(function() {
         }
     });
 
+    $("#btnAttack").click(function(){
+        $(".adjacent").removeClass("adjacent");
+        $(".chosen").removeClass("chosen");
+        $(".others").removeClass("others");
+    });
+
     var width = $("#gameMap").width();
     var height = $("#gameMap").height();
 
