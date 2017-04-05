@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -14,8 +15,12 @@ public class GameController {
     //Startar länderna utanför för att skriva om länderna hela tiden
     Board createInitBoard = new Board();
     List<Region> activeGameBoard = createInitBoard.getRegions();
-    MajorNation majorNation = new MajorNation();
-    String activeCountry = "USA";
+    MajorNation usa = new MajorNation("USA");
+    MajorNation france = new MajorNation("FRANCE");
+    MajorNation britain = new MajorNation("BRITAIN");
+    MajorNation germany = new MajorNation("GERMANY");
+    MajorNation japan = new MajorNation("JAPAN");
+    MajorNation russia = new MajorNation("RUSSIA");
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
@@ -39,42 +44,42 @@ public class GameController {
 
         if (activeCountry.equalsIgnoreCase("usa")) {
             for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (majorNation.getRegionsOwnedByUsa().contains(item)) {
+                if (usa.getRegionsOwnedByUsa().contains(item)) {
                     namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                 }
             }
         }
         else if (activeCountry.equalsIgnoreCase("britain")) {
             for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (majorNation.getRegionsOwnedByBritain().contains(item)) {
+                if (usa.getRegionsOwnedByBritain().contains(item)) {
                     namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                 }
             }
         }
         else if (activeCountry.equalsIgnoreCase("france")) {
             for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (majorNation.getRegionsOwnedByFrance().contains(item)) {
+                if (usa.getRegionsOwnedByFrance().contains(item)) {
                     namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                 }
             }
         }
         else if (activeCountry.equalsIgnoreCase("germany")) {
             for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (majorNation.getRegionsOwnedByGermany().contains(item)) {
+                if (usa.getRegionsOwnedByGermany().contains(item)) {
                     namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                 }
             }
         }
         else if (activeCountry.equalsIgnoreCase("russia")) {
             for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (majorNation.getRegionsOwnedByRussia().contains(item)) {
+                if (usa.getRegionsOwnedByRussia().contains(item)) {
                     namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                 }
             }
         }
         else if (activeCountry.equalsIgnoreCase("japan")) {
             for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (majorNation.getRegionsOwnedByJapan().contains(item)) {
+                if (usa.getRegionsOwnedByJapan().contains(item)) {
                     namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                 }
             }
@@ -85,5 +90,13 @@ public class GameController {
         }
         idsForAdjacentRegions +="!3"+ regionIdObject.getName();
         return new RegionInfo(currentLand, namesOfAttackRegions, idsForAdjacentRegions);
+    }
+
+    @MessageMapping("/attack")
+    @SendTo("/topic/gameRoom")
+    public RegionInfo attackedRegion(SelectedRegionObject regionIdObject) throws Exception {
+        String gID = regionIdObject.getName().substring(1);
+        int gInt = Integer.parseInt(gID)-1;
+        return new RegionInfo(regionIdObject.getName());
     }
 }

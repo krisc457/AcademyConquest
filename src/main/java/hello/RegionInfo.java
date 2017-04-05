@@ -9,6 +9,10 @@ public class RegionInfo {
     public RegionInfo() {
     }
 
+    public RegionInfo(String content) {
+        this.content = content;
+    }
+
     public RegionInfo(String content, String namesOfAttackRegions, String idsForAdjacentRegions) {
         this.content = content;
         this.namesOfAttackRegions = namesOfAttackRegions;
