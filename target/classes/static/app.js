@@ -33,7 +33,7 @@ function disconnect() {
 }
 
 function sendGameTurnData() {
-    stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
+    stompClient.send("/app/makeMove", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
 function updateGame(message) {
