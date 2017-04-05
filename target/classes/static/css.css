@@ -4,9 +4,9 @@
     src: url('18thCentury.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
-.navbar {
-    display: none;
-}
+/*.navbar {*/
+    /*display: none;*/
+/*}*/
 
 #gameMap {
     width: 5027px;
@@ -27,7 +27,7 @@
     text-align: center;
     font-family: 'Delius Unicase', cursive;
     vertical-align: middle;
-    transform: translateY(20%);
+    transform: translateY(7%);
     background: rgba(0, 0, 0, 0.2);
     padding-top: 2em;
     padding-bottom: 2em
@@ -261,5 +261,7 @@ path:hover:not(.active) {
 
 a:link {
     text-decoration: none;
-    color: #f7b71a;
+    color: yellow;
+    text-shadow: 2px 2px #333;
+    font-weight: bold;
 }
