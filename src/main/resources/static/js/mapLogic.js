@@ -11,10 +11,10 @@ $(document).ready(function() {
         }
     });
 
-    $("#btnAttack").click(function(){
+    $("#btnClose").click(function(){
         $(".adjacent").removeClass("adjacent");
-        $(".chosen").removeClass("chosen");
         $(".others").removeClass("others");
+        $(".chosen").removeClass("chosen");
     });
 
     var width = $("#gameMap").width();

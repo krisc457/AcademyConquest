@@ -8,113 +8,64 @@ import java.util.List;
  */
 public class MajorNation {
 
-    private int nationId;
-    private List<String> regionsOwned;
+    private List<String> regionsOwned = new ArrayList<>();
+    private String nationName;
 
-    private List<String> regionsOwnedByUsa() {
-        List<String> regionsOwnedByUsa = new ArrayList<>();
-        regionsOwnedByUsa.add("g8");
-        regionsOwnedByUsa.add("g9");
-        regionsOwnedByUsa.add("g10");
-        regionsOwnedByUsa.add("g11");
-
-        return regionsOwnedByUsa;
+    public MajorNation(String nationName) {
+        this.nationName = nationName;
+        setRegions(nationName);
     }
 
-    private List<String> regionsOwnedByBritain() {
-        List<String> regionsOwnedBritain = new ArrayList<>();
-        regionsOwnedBritain.add("g38");
-        regionsOwnedBritain.add("g39");
-        regionsOwnedBritain.add("g40");
-
-        return regionsOwnedBritain;
+    public List<String> getRegionsOwned() {
+        return regionsOwned;
     }
 
-    private List<String> regionsOwnedByFrance() {
-        List<String> regionsOwnedFrance = new ArrayList<>();
-        regionsOwnedFrance.add("g50");
-        regionsOwnedFrance.add("g51");
-        regionsOwnedFrance.add("g54");
-
-        return regionsOwnedFrance;
+    public void setRegions(String nationName) {
+        if(nationName.equalsIgnoreCase("usa")){
+            this.addToRegionsOwned("g8");
+            this.addToRegionsOwned("g9");
+            this.addToRegionsOwned("g10");
+            this.addToRegionsOwned("g11");
+        }
+        else if (nationName.equalsIgnoreCase("russia")){
+            this.addToRegionsOwned("g43");
+            this.addToRegionsOwned("g44");
+            this.addToRegionsOwned("g99");
+            this.addToRegionsOwned("g100");
+            this.addToRegionsOwned("g101");
+            this.addToRegionsOwned("g112");
+        }
+        else if (nationName.equalsIgnoreCase("britain")){
+            this.addToRegionsOwned("g38");
+            this.addToRegionsOwned("g39");
+            this.addToRegionsOwned("g40");
+        }
+        else if (nationName.equalsIgnoreCase("japan")){
+            this.addToRegionsOwned("g103");
+            this.addToRegionsOwned("g104");
+            this.addToRegionsOwned("g105");
+            this.addToRegionsOwned("g106");
+        }
+        else if (nationName.equalsIgnoreCase("france")){
+            this.addToRegionsOwned("g50");
+            this.addToRegionsOwned("g51");
+            this.addToRegionsOwned("g54");
+        }
+        else if (nationName.equalsIgnoreCase("germany")){
+            this.addToRegionsOwned("g45");
+            this.addToRegionsOwned("g46");
+            this.addToRegionsOwned("g60");
+        }
+        else {
+            System.out.println("NU ÄR DET FEEEEEEEL!");
+        }
     }
 
-    private List<String> regionsOwnedByGermany() {
-        List<String> regionsOwnedGermany = new ArrayList<>();
-        regionsOwnedGermany.add("g45");
-        regionsOwnedGermany.add("g46");
-        regionsOwnedGermany.add("g60");
-
-        return regionsOwnedGermany;
+    public void addToRegionsOwned(String regionId) {
+        this.regionsOwned.add(regionId);
     }
 
-    private List<String> regionsOwnedByRussia() {
-        List<String> regionsOwnedRussia = new ArrayList<>();
-        regionsOwnedRussia.add("g43");
-        regionsOwnedRussia.add("g44");
-        regionsOwnedRussia.add("g99");
-        regionsOwnedRussia.add("g112");
-        regionsOwnedRussia.add("g100");
-        regionsOwnedRussia.add("g101");
-
-        return regionsOwnedRussia;
-    }
-
-    private List<String> regionsOwnedByJapan() {
-        List<String> regionsOwnedJapan = new ArrayList<>();
-        regionsOwnedJapan.add("g103");
-        regionsOwnedJapan.add("g104");
-        regionsOwnedJapan.add("g105");
-        regionsOwnedJapan.add("g106");
-
-        return regionsOwnedJapan;
-    }
-
-    public List<String> getRegionsOwnedByUsa() {
-        return regionsOwnedByUsa();
-    }
-
-    public void setRegionsOwnedByUsa(String region) {
-        regionsOwnedByUsa().add(region);
-    }
-
-    public List<String> getRegionsOwnedByBritain() {
-        return regionsOwnedByBritain();
-    }
-
-    public void setRegionsOwnedByBritain(String region) {
-        regionsOwnedByUsa().add(region);
-    }
-
-    public List<String> getRegionsOwnedByFrance() {
-        return regionsOwnedByFrance();
-    }
-
-    public void setRegionsOwnedByFrance(String region) {
-        regionsOwnedByUsa().add(region);
-    }
-
-    public List<String> getRegionsOwnedByGermany() {
-        return regionsOwnedByGermany();
-    }
-
-    public void setRegionsOwnedByGermany(String region) {
-        regionsOwnedByUsa().add(region);
-    }
-
-    public List<String> getRegionsOwnedByRussia() {
-        return regionsOwnedByRussia();
-    }
-
-    public void setRegionsOwnedByRussia(String region) {
-        regionsOwnedByUsa().add(region);
-    }
-
-    public List<String> getRegionsOwnedByJapan() {
-        return regionsOwnedByJapan();
-    }
-
-    public void setRegionsOwnedByJapan(String region) {
-        regionsOwnedByUsa().add(region);
+    public String getNationName() {
+        return nationName;
     }
 }
