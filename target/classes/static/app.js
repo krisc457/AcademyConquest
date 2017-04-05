@@ -45,6 +45,7 @@ function updateGame(message) {
     var namesOfAttackRegionsSplit = info[1].split("!2");
     var adjacentRegionIdsSplit = info[2].split("!3");
 
+
     $("#CountryName").html(regionInfoSplit[0]);
     $("#CountryValues").html(regionInfoSplit[1]);
 
