@@ -23,7 +23,7 @@ public class GameController {
         ModelAndView mapmodel = new ModelAndView("map");
         //List<Region> gameStuff = createInitBoard.getRegions();
         if (session.getAttribute("user") == null) {
-            return new ModelAndView("redirect://index.html");
+            return new ModelAndView("redirect:/index.html");
         }
         return mapmodel;
     }
