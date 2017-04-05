@@ -82,19 +82,39 @@ public class MajorNation {
         return regionsOwnedByBritain();
     }
 
+    public void setRegionsOwnedByBritain(String region) {
+        regionsOwnedByUsa().add(region);
+    }
+
     public List<String> getRegionsOwnedByFrance() {
         return regionsOwnedByFrance();
+    }
+
+    public void setRegionsOwnedByFrance(String region) {
+        regionsOwnedByUsa().add(region);
     }
 
     public List<String> getRegionsOwnedByGermany() {
         return regionsOwnedByGermany();
     }
 
+    public void setRegionsOwnedByGermany(String region) {
+        regionsOwnedByUsa().add(region);
+    }
+
     public List<String> getRegionsOwnedByRussia() {
         return regionsOwnedByRussia();
     }
 
+    public void setRegionsOwnedByRussia(String region) {
+        regionsOwnedByUsa().add(region);
+    }
+
     public List<String> getRegionsOwnedByJapan() {
         return regionsOwnedByJapan();
+    }
+
+    public void setRegionsOwnedByJapan(String region) {
+        regionsOwnedByUsa().add(region);
     }
 }
