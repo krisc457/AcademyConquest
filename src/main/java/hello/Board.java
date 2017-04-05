@@ -334,6 +334,20 @@ public class Board {
         regions.get(41).addToAdjacentRegions("g47");
         regions.get(41).addToAdjacentRegions("g43");
 
+        regions.get(42).addToAdjacentRegions("g44");
+        regions.get(42).addToAdjacentRegions("g42");
+        regions.get(42).addToAdjacentRegions("g41");
+        regions.get(42).addToAdjacentRegions("g99");
+        regions.get(42).addToAdjacentRegions("g45");
+
+        regions.get(43).addToAdjacentRegions("g43");
+        regions.get(43).addToAdjacentRegions("g99");
+        regions.get(43).addToAdjacentRegions("g112");
+        regions.get(43).addToAdjacentRegions("g113");
+        regions.get(43).addToAdjacentRegions("g62");
+        regions.get(43).addToAdjacentRegions("g61");
+        regions.get(43).addToAdjacentRegions("g45");
+
         regions.get(44).addToAdjacentRegions("g44");
         regions.get(44).addToAdjacentRegions("g46");
         regions.get(44).addToAdjacentRegions("g60");

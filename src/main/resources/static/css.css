@@ -5,7 +5,7 @@
 }
 
 /*.navbar {*/
-    /*display: none;*/
+/*display: none;*/
 /*}*/
 
 #gameMap {
@@ -33,7 +33,7 @@
     padding-bottom: 2em
 }
 
-#startHeading{
+#startHeading {
     font-family: '18thCentury', serif;
     font-size: 5em;
     text-shadow: 1px 1px #fff;
@@ -79,11 +79,19 @@ path {
     opacity: 0;
     fill: rgba(19, 14, 13, 0.8);
     stroke: rgba(38, 28, 26, 1);
-    stroke-width: 5px;
+    stroke-width: 10px;
 }
 
-path:hover:not(.active) {
+path:hover:not(.active):not(.others) {
     animation: opacityShow 0.25s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    cursor: pointer;
+}
+
+.active:hover:not(.others) {
+    animation: opacityShowActive 0.25s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
@@ -99,13 +107,23 @@ path:hover:not(.active) {
 }
 
 .adjacent {
-  /*  */
+    /*  */
 }
 
 .chosen {
-  animation: chosenShow 1s infinite;
-  animation-fill-mode:forwards;
-  animation-timing-function: ease-in-out;
+    animation: chosenShow 1s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+.adjacent {
+    /*  */
+}
+
+.chosen {
+    animation: chosenShow 1s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
 }
 
 .active {
@@ -149,9 +167,14 @@ path:hover:not(.active) {
 }
 
 .others {
-  opacity: 0.85 !important;
-  fill: black !important;
-  stroke: black !important;
+    opacity: 0.85 !important;
+    fill: black !important;
+    stroke: black !important;
+}
+
+.others:hover {
+    opacity: 1 !important;
+    cursor: pointer;
 }
 
 @keyframes opacityShow {
@@ -173,18 +196,33 @@ path:hover:not(.active) {
 }
 
 @keyframes chosenShow {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.9;
-  }
-  100% {
-    opacity: 0;
-  }
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
-/* CSS kod för zoom kod nedan */
+@keyframes chosenShow {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.others:hover {
+    opacity: 1 !important;
+    cursor: pointer;
+}
 
 @keyframes zoomIn {
     from {
@@ -264,4 +302,13 @@ a:link {
     color: yellow;
     text-shadow: 2px 2px #333;
     font-weight: bold;
+
+}
+
+#ifAttackIsPossible {
+    float: left;
+}
+
+.modal-footer > p {
+    text-align: left;
 }
