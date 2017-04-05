@@ -91,7 +91,7 @@ public class GameController {
 
 
         System.out.println(currLand);
-        currLand = currLand + "!split" + result + "!split" + temp + "!split";
+        currLand = currLand + "!split" + result + "!split" + temp;
         System.out.println(gameStuff.get(gInt).getAdjacentRegions());
         return new RegionInfo(currLand);
     }
