@@ -25,7 +25,7 @@ public class GameController {
         if (session.getAttribute("user") == null) {
             return new ModelAndView("redirect://index.html");
         }
-        return mapmodel.addObject(gameStuff.get(20).getRegionID());
+        return mapmodel;
     }
 
     @MessageMapping("/endTurn")
