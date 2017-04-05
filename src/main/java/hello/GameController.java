@@ -87,11 +87,8 @@ public class GameController {
             temp +="!3"+ adjacent;
         }
         temp +="!3"+ regionIdObject.getName();
-
-
-        System.out.println(currLand);
+        
         currLand = currLand + "!split" + result + "!split" + temp;
-        System.out.println(activeGameBoard.get(gInt).getAdjacentRegions());
         return new RegionInfo(currLand);
     }
 }
