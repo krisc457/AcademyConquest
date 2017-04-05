@@ -21,11 +21,11 @@ public class GameController {
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
         ModelAndView mapmodel = new ModelAndView("map");
-        List<Region> gameStuff = createInitBoard.getRegions();
+        //List<Region> gameStuff = createInitBoard.getRegions();
         if (session.getAttribute("user") == null) {
             return new ModelAndView("redirect://index.html");
         }
-        return mapmodel.addObject(gameStuff.get(20).getRegionID());
+        return mapmodel;
     }
 
     @MessageMapping("/endTurn")
