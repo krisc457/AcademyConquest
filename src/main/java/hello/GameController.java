@@ -15,18 +15,21 @@ public class GameController {
     //Startar länderna utanför för att skriva om länderna hela tiden
     Board createInitBoard = new Board();
     List<Region> activeGameBoard = createInitBoard.getRegions();
-    MajorNation usa = new MajorNation("USA");
-    MajorNation france = new MajorNation("FRANCE");
+    List<MajorNation> majorNations = new ArrayList<>();
     MajorNation britain = new MajorNation("BRITAIN");
     MajorNation germany = new MajorNation("GERMANY");
+    MajorNation france = new MajorNation("FRANCE");
+    MajorNation usa = new MajorNation("USA");
     MajorNation japan = new MajorNation("JAPAN");
     MajorNation russia = new MajorNation("RUSSIA");
+    String activeCountry = "usa";
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
+        initMajorNationsList();
         ModelAndView mapmodel = new ModelAndView("map");
         if (session.getAttribute("user") == null) {
-            return new ModelAndView("redirect://index.html");
+            return new ModelAndView("redirect:/index.html");
         }
         return mapmodel;
     }
@@ -35,13 +38,13 @@ public class GameController {
     @SendTo("/topic/gameRoom")
     public RegionInfo region(SelectedRegionObject regionIdObject) throws Exception {
         //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp
-
+        System.out.println(regionIdObject.getMajorNationTurn());
         String gID = regionIdObject.getName().substring(1);
         int gInt = Integer.parseInt(gID)-1;
         String namesOfAttackRegions = "";
         String idsForAdjacentRegions = "";
         String currentLand = activeGameBoard.get(gInt).getName() + " !1Troops " + activeGameBoard.get(gInt).getTroops() + " <br>Networth " + activeGameBoard.get(gInt).getNetworth();
-
+        /*
         if (activeCountry.equalsIgnoreCase("usa")) {
             for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
                 if (usa.getRegionsOwnedByUsa().contains(item)) {
@@ -84,7 +87,7 @@ public class GameController {
                 }
             }
         }
-
+        */
         for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
             idsForAdjacentRegions +="!3"+ adjacent;
         }
@@ -98,5 +101,26 @@ public class GameController {
         String gID = regionIdObject.getName().substring(1);
         int gInt = Integer.parseInt(gID)-1;
         return new RegionInfo(regionIdObject.getName());
+    }
+
+    public void initMajorNationsList() {
+        if (britain != null){
+            majorNations.add(britain);
+        }
+        if (germany != null){
+            majorNations.add(germany);
+        }
+        if (france != null){
+            majorNations.add(france);
+        }
+        if (usa != null){
+            majorNations.add(usa);
+        }
+        if (japan != null){
+            majorNations.add(japan);
+        }
+        if (russia != null){
+            majorNations.add(russia);
+        }
     }
 }

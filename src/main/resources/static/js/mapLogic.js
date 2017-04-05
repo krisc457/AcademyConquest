@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+    var majorNationTurn;
+
+    $("#majorNationsDropdown > li > a").click(function(){
+        var majorNationTurn = $(this).attr("id");
+        stompClient.send("/app/makeMove", {}, JSON.stringify({'name': majorNationTurn}));
+    });
+
     $('g > a').click(function () {
         if($(this).children().hasClass("chosen")) {
             $(".adjacent").removeClass("adjacent");

@@ -1,4 +1,9 @@
 var stompClient = null;
+var majorNationTurn = "Britain";
+
+$("#majorNationsDropdown > li > a").click(function(){
+    majorNationTurn = $(this).attr("id");
+});
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -28,22 +33,6 @@ $(document).ready(function(){
     });
 });
 
-/*
-function disconnect() {
-    if (stompClient != null) {
-        stompClient.disconnect();
-    }
-    setConnected(false);
-    console.log("Disconnected");
-}
-*/
-
-/*
-function sendGameTurnData() {
-    stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
-}
-*/
-
 function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
     var currentLand = currentLand.split("!1");
     var namesOfAttackRegions = namesOfAttackRegions.split("!2");
@@ -66,7 +55,34 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
         attackRegionOutput += "<button type='button' class='btn btn-default attackFrom' data-dismiss='modal' value='" + namesOfAttackRegions[i] + "'>" + namesOfAttackRegions[i] + "</button><br>";
     }
     $("#ifAttackIsPossible").append().html("<h4>Du kan attackera från:</h4>" + attackRegionOutput);
+    $(".attackFrom").click(function () {
+        stompClient.send("/app/attack", {}, JSON.stringify({'name':idsForAdjacentRegions[idsForAdjacentRegions.length-1]}));
+    });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 $(function () {
@@ -78,3 +94,19 @@ $(function () {
     $( "#endTurn" ).click(function() { sendGameTurnData(); });
 });
 */
+
+/*
+ function disconnect() {
+ if (stompClient != null) {
+ stompClient.disconnect();
+ }
+ setConnected(false);
+ console.log("Disconnected");
+ }
+ */
+
+/*
+ function sendGameTurnData() {
+ stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
+ }
+ */

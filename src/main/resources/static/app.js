@@ -28,22 +28,6 @@ $(document).ready(function(){
     });
 });
 
-/*
-function disconnect() {
-    if (stompClient != null) {
-        stompClient.disconnect();
-    }
-    setConnected(false);
-    console.log("Disconnected");
-}
-*/
-
-/*
-function sendGameTurnData() {
-    stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
-}
-*/
-
 function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
     var currentLand = currentLand.split("!1");
     var namesOfAttackRegions = namesOfAttackRegions.split("!2");
@@ -71,6 +55,30 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
     });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 $(function () {
     $("form").on('submit', function (e) {
@@ -81,3 +89,19 @@ $(function () {
     $( "#endTurn" ).click(function() { sendGameTurnData(); });
 });
 */
+
+/*
+ function disconnect() {
+ if (stompClient != null) {
+ stompClient.disconnect();
+ }
+ setConnected(false);
+ console.log("Disconnected");
+ }
+ */
+
+/*
+ function sendGameTurnData() {
+ stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
+ }
+ */
