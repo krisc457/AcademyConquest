@@ -1,9 +1,4 @@
 var stompClient = null;
-var majorNationTurn = "Britain";
-
-$("#majorNationsDropdown > li > a").click(function(){
-    majorNationTurn = $(this).attr("id");
-});
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);

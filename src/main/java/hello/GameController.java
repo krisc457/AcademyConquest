@@ -1,5 +1,7 @@
 package hello;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -38,73 +40,47 @@ public class GameController {
 
     @MessageMapping("/makeMove")
     @SendTo("/topic/gameRoom")
-    public RegionInfo region(SelectedRegionObject regionIdObject) throws Exception {
+    public RegionInfo region(String regionIdObject) throws Exception {
+        System.out.println(regionIdObject);
+        JSONParser myJsonParser = new JSONParser();
+        JSONObject myJson = (JSONObject) myJsonParser.parse(regionIdObject);
+        //System.out.println(myJson.get("name"));
+        //System.out.println(myJson.get("majorNationTurn"));
         //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp
-        System.out.println(regionIdObject.getMajorNationTurn());
-        String gID = regionIdObject.getName().substring(1);
+
+        String gID = ((String) myJson.get("name")).substring(1);
+        String majorNationTurn = (String) myJson.get("majorNationTurn");
         int gInt = Integer.parseInt(gID)-1;
         String namesOfAttackRegions = "";
         String idsForAdjacentRegions = "";
         String currentLand = activeGameBoard.get(gInt).getName() + " !1Troops " + activeGameBoard.get(gInt).getTroops() + " <br>Networth " + activeGameBoard.get(gInt).getNetworth();
 
-        /*
-        if (activeCountry.equalsIgnoreCase("usa")) {
-            for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (usa.getRegionsOwnedByUsa().contains(item)) {
-                    namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
-                }
-            }
+        switch (majorNationTurn) {
+            case "Britain":
+                System.out.println(majorNationTurn);
+                break;
+            case "Germany":
+                System.out.println(majorNationTurn);
+                break;
+            case "France":
+                System.out.println(majorNationTurn);
+                break;
+            case "Usa":
+                System.out.println(majorNationTurn);
+                break;
+            case "Japan":
+                System.out.println(majorNationTurn);
+                break;
+            case "Russia":
+                System.out.println(majorNationTurn);
+                break;
         }
-        else if (activeCountry.equalsIgnoreCase("britain")) {
-            for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (usa.getRegionsOwnedByBritain().contains(item)) {
-                    namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
-                }
-            }
-        }
-        else if (activeCountry.equalsIgnoreCase("france")) {
-            for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (usa.getRegionsOwnedByFrance().contains(item)) {
-                    namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
-                }
-            }
-        }
-        else if (activeCountry.equalsIgnoreCase("germany")) {
-            for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (usa.getRegionsOwnedByGermany().contains(item)) {
-                    namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
-                }
-            }
-        }
-        else if (activeCountry.equalsIgnoreCase("russia")) {
-            for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (usa.getRegionsOwnedByRussia().contains(item)) {
-                    namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
-                }
-            }
-        }
-        else if (activeCountry.equalsIgnoreCase("japan")) {
-            for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
-                if (usa.getRegionsOwnedByJapan().contains(item)) {
-                    namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
-                }
-            }
-        }
-        */
 
         for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
             idsForAdjacentRegions +="!3"+ adjacent;
         }
-        idsForAdjacentRegions +="!3"+ regionIdObject.getName();
+        idsForAdjacentRegions +="!3"+ myJson.get("name");
         return new RegionInfo(currentLand, namesOfAttackRegions, idsForAdjacentRegions);
-    }
-
-    @MessageMapping("/attack")
-    @SendTo("/topic/gameRoom")
-    public RegionInfo attackedRegion(SelectedRegionObject regionIdObject) throws Exception {
-        String gID = regionIdObject.getName().substring(1);
-        int gInt = Integer.parseInt(gID)-1;
-        return new RegionInfo(regionIdObject.getName());
     }
 
     public void initMajorNationsList() {
