@@ -41,19 +41,13 @@ function updateGame(message) {
     //     Patrik splittas med "!patrik" och "!1". Schmidt splittas med "!schmidt" och "!2". Cox med "!cox" och "!3".
 
     var info = message.split("!split")
-    console.log(info);
     var rikuInfo = info[0];
     var rikuInfoRätt = info[0].split("!1");
-    console.log(rikuInfo);
-    console.log(rikuInfoRätt);
     var schmidtInfo = info[1];
     var schmidtInfoRätt = info[1].split("!2");
-    console.log(schmidtInfo);
-    console.log(schmidtInfoRätt);
     var coxInfo = info[2];
     var coxInfoRätt = info[2].split("!3");
-    console.log(coxInfo);
-    console.log(coxInfoRätt);
+    
 
     $("#CountryName").html(rikuInfoRätt[0]);
     $("#CountryValues").html(rikuInfoRätt[1]);

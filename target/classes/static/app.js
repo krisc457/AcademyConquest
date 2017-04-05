@@ -36,21 +36,6 @@ function sendGameTurnData() {
     stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
-// function updateGame(message) {
-//     //Vi splittar upp informationen för att kunna skriva värden på olika ställen
-//     var countryContent = message.split("!1");
-//     $("#CountryName").html(countryContent[0]);
-//     $("#CountryValues").html(countryContent[1]);
-//     $(".adjacent").removeClass("adjacent");
-//     $(".chosen").removeClass("chosen");
-//     $(".others").removeClass("others");
-//     for(var i=2; i<countryContent.length-1; i++){
-//         $("#" + countryContent[i] + " > g > a > path").addClass("adjacent");
-//     }
-//     $("#" + countryContent[countryContent.length-1] + " > g > a > path").addClass("chosen");
-//     $("path:not(.adjacent):not(.chosen)").addClass("others");
-// }
-
 function updateGame(message) {
     // Vi splittar upp informationen för att kunna skriva värden på olika ställen.
     //     Patrik splittas med "!patrik" och "!1". Schmidt splittas med "!schmidt" och "!2". Cox med "!cox" och "!3".

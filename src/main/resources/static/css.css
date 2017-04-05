@@ -21,6 +21,14 @@ path {
   stroke-width: 5px;
 }
 
+path:hover:not(active):not(.others) {
+  animation: opacityShowActive 0.25s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  cursor: pointer;
+}
+
 .active:hover:not(.others) {
   animation: opacityShowActive 0.25s;
   animation-fill-mode: forwards;
@@ -35,10 +43,6 @@ path {
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   cursor: pointer;
-}
-
-.adjacent {
-  /*  */
 }
 
 .chosen {
@@ -87,10 +91,9 @@ path {
   cursor: pointer;
 }
 
-.others {
-  opacity: 0.85 !important;
-  fill: black !important;
-  stroke: black !important;
+.others:hover {
+  opacity: 1 !important;
+  cursor: pointer;
 }
 
 @keyframes opacityShow {
@@ -121,11 +124,6 @@ path {
   100% {
     opacity: 0;
   }
-}
-
-.others:hover {
-  opacity: 1 !important;
-  cursor: pointer;
 }
 
 @keyframes zoomIn {
