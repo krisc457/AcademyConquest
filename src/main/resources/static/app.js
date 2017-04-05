@@ -39,20 +39,34 @@ function sendGameTurnData() {
 }
 
 function updateGame(message) {
-    //Vi splittar upp informationen för att kunna skriva värden på olika ställen
-    var countryContent = message.split("!1");
-    $("#CountryName").html(countryContent[0]);
-    $("#CountryValues").html(countryContent[1]);
+    // Vi splittar upp informationen för att kunna skriva värden på olika ställen.
+    // Strängen message splittas med "!split" och "!1" och "!2" och "!3".
+
+    var info = message.split("!split")
+    var regionInfoSplit = info[0].split("!1");
+    var namesOfAttackRegionsSplit = info[1].split("!2");
+    var adjacentRegionIdsSplit = info[2].split("!3");
+
+    $("#CountryName").html(regionInfoSplit[0]);
+    $("#CountryValues").html(regionInfoSplit[1]);
+
     $(".adjacent").removeClass("adjacent");
     $(".chosen").removeClass("chosen");
     $(".others").removeClass("others");
-    for(var i=2; i<countryContent.length-1; i++){
-        $("#" + countryContent[i] + " > g > a > path").addClass("adjacent");
+    for(var i=1; i<adjacentRegionIdsSplit.length-1; i++){
+        $("#" + adjacentRegionIdsSplit[i] + " > g > a > path").addClass("adjacent");
     }
-    $("#" + countryContent[countryContent.length-1] + " > g > a > path").addClass("chosen");
+    $("#" + adjacentRegionIdsSplit[adjacentRegionIdsSplit.length-1] + " > g > a > path").addClass("chosen");
     $("path:not(.adjacent):not(.chosen)").addClass("others");
+
+    var abc = "";
+    for (var i=1; i<namesOfAttackRegionsSplit.length; i++) {
+        abc +=  namesOfAttackRegionsSplit[i]+"<br>";
+    }
+    $("#ifAttackIsPossible").append().html("<h4>Du kan attackera från:</h4><p>" + abc + "</p>");
 }
 
+/*
 $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
@@ -61,3 +75,4 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#endTurn" ).click(function() { sendGameTurnData(); });
 });
+*/

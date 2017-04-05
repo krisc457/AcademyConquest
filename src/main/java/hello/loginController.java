@@ -34,15 +34,6 @@ public class loginController {
         return new ModelAndView("/map").addObject("UserName",Username);
     }
 
-    @GetMapping("/game")
-    public String form(HttpSession session) {
-        if (session.getAttribute("username") == null) {
-            return "redirect:/DELETETHIS.html";
-        }
-        return "game";
-    }
-
-
     @GetMapping("/newUser")
     public ModelAndView form(String username, String password) {
         UserSignUp user = new UserSignUp( "", "");

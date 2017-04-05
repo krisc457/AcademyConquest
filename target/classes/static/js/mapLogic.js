@@ -11,6 +11,12 @@ $(document).ready(function() {
         }
     });
 
+    $("#btnAttack").click(function(){
+        $(".adjacent").removeClass("adjacent");
+        $(".chosen").removeClass("chosen");
+        $(".others").removeClass("others");
+    });
+
     var width = $("#gameMap").width();
     var height = $("#gameMap").height();
 
@@ -22,12 +28,12 @@ $(document).ready(function() {
         $("#gameMap").css("transform-origin", 0 + "px" + scrolledY + "px");
         $("#gameMap").css("animation", "zoomIn 0.5s");
         /*
-        setTimeout(function(){
-            $("#gameMap").css("width", newWidth + "px");
-            $("#gameMap").css("height", newHeight + "px");
-            window.scrollTo(scrolledX * 1.25, scrolledY * 1.26);
-        }, 500);
-        */
+         setTimeout(function(){
+         $("#gameMap").css("width", newWidth + "px");
+         $("#gameMap").css("height", newHeight + "px");
+         window.scrollTo(scrolledX * 1.25, scrolledY * 1.26);
+         }, 500);
+         */
     });
 
     $("#zoomOut").click(function(e){
