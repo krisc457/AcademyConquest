@@ -1,4 +1,9 @@
 var stompClient = null;
+var majorNationTurn = "Britain";
+
+$("#majorNationsDropdown > li > a").click(function(){
+    majorNationTurn = $(this).attr("id");
+});
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -28,6 +33,7 @@ $(document).ready(function(){
     });
 });
 
+<<<<<<< HEAD
 /*
  function disconnect() {
  if (stompClient != null) {
@@ -44,6 +50,8 @@ $(document).ready(function(){
  }
  */
 
+=======
+>>>>>>> 230f714ee0b39b6038e69b780d6b0a449db6f50a
 function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
     var currentLand = currentLand.split("!1");
     var namesOfAttackRegions = namesOfAttackRegions.split("!2");
@@ -71,7 +79,32 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
     });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
+<<<<<<< HEAD
  $(function () {
  $("form").on('submit', function (e) {
  e.preventDefault();
@@ -80,4 +113,30 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
  $( "#disconnect" ).click(function() { disconnect(); });
  $( "#endTurn" ).click(function() { sendGameTurnData(); });
  });
+=======
+$(function () {
+    $("form").on('submit', function (e) {
+        e.preventDefault();
+    });
+    $( "#connect" ).click(function() { connect(); });
+    $( "#disconnect" ).click(function() { disconnect(); });
+    $( "#endTurn" ).click(function() { sendGameTurnData(); });
+});
+*/
+
+/*
+ function disconnect() {
+ if (stompClient != null) {
+ stompClient.disconnect();
+ }
+ setConnected(false);
+ console.log("Disconnected");
+ }
+ */
+
+/*
+ function sendGameTurnData() {
+ stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
+ }
+>>>>>>> 230f714ee0b39b6038e69b780d6b0a449db6f50a
  */

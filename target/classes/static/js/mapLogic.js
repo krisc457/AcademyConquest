@@ -7,7 +7,11 @@ $(document).ready(function() {
             $(".others").removeClass("others");
         } else {
             var myId = $(this).parent().parent().attr('id');
+<<<<<<< HEAD
             stompClient.send("/app/makeMove", {}, JSON.stringify({'person': myId}));
+=======
+            stompClient.send("/app/makeMove", {}, JSON.stringify({'name': myId, 'majorNationTurn': majorNationTurn}));
+>>>>>>> 230f714ee0b39b6038e69b780d6b0a449db6f50a
         }
     });
 
