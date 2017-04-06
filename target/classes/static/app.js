@@ -29,6 +29,7 @@ $(document).ready(function(){
                 JSON.parse(greeting.body).clickedLand,
                 JSON.parse(greeting.body).troops,
                 JSON.parse(greeting.body).networth
+                //Lägg in värde med land man attackerar ifrån
             );
         });
 
@@ -50,6 +51,8 @@ $(document).ready(function(){
  stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
  }
  */
+
+//Skicka också in värde från det land man attackerar ifrån
 function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn, cancelMove, attackMove, attackSuccess, clickedLand, troops, networth) {
     if(namesOfAttackRegions != null) {
     var namesOfAttackRegions = namesOfAttackRegions.split("!2");
@@ -76,6 +79,7 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
         $(".adjacent").removeClass("adjacent");
         $(".chosen").removeClass("chosen");
         $(".others").removeClass("others");
+
 
         if(attackSuccess) {
             switch (majorNationTurn) {

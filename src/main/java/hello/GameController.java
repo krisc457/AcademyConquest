@@ -25,6 +25,7 @@ public class GameController {
     MajorNation japan = new MajorNation("JAPAN");
     MajorNation russia = new MajorNation("RUSSIA");
 
+    String activeCountry = "usa";
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
