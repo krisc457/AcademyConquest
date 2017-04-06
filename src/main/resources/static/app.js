@@ -59,7 +59,7 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
     }
     else {
         namesOfAttackRegions = "";
-        
+
     }
     if(idsForAdjacentRegions != null) {
     var idsForAdjacentRegions = idsForAdjacentRegions.split("!3");
