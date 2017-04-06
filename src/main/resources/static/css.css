@@ -57,6 +57,14 @@ a:link {
     width: 70px;
 }
 
+.dropdowncountry {
+    height: 7px;
+    width: 7px;
+    margin-top: 0.5em;
+    float: left;
+    background-color: blue;
+}
+
 header {
     margin-bottom: 40px;
 }
