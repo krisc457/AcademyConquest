@@ -40,7 +40,7 @@ public class GameController {
 
     @MessageMapping("/makeMove")
     @SendTo("/topic/gameRoom")
-    public RegionInfo region(String regionIdObject) throws Exception {
+    public RegionInfo makeMove(String regionIdObject) throws Exception {
         JSONParser myJsonParser = new JSONParser();
         JSONObject myJson = (JSONObject) myJsonParser.parse(regionIdObject);
         //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp
@@ -50,7 +50,6 @@ public class GameController {
         int gInt = Integer.parseInt(gID)-1;
         String namesOfAttackRegions = "";
         String idsForAdjacentRegions = "";
-        String currentLand = activeGameBoard.get(gInt).getName() + " !1Troops " + activeGameBoard.get(gInt).getTroops() + " <br>Networth " + activeGameBoard.get(gInt).getNetworth();
 
         switch (majorNationTurn) {
             case "Britain":
@@ -109,7 +108,19 @@ public class GameController {
         System.out.println(idsForAdjacentRegions);
         System.out.println(majorNationTurn);
 
-        return new RegionInfo(currentLand, namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn);
+         RegionInfo info = new RegionInfo(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn);
+        info.setTroops(""+activeGameBoard.get(gInt).getTroops());
+        info.setNetworth(""+activeGameBoard.get(gInt).getNetworth());
+        info.setClickedLand(activeGameBoard.get(gInt).getName());
+        return info;
+    }
+
+    @MessageMapping("/cancelMove")
+    @SendTo("/topic/gameRoom")
+    public RegionInfo cancelMove() throws Exception {
+    RegionInfo info = new RegionInfo();
+    info.setCancelMove(true);
+    return info;
     }
 
     @MessageMapping("/attack")
@@ -119,39 +130,57 @@ public class GameController {
         JSONObject myJson = (JSONObject) myJsonParser.parse(regionIdObject);
         //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp
 
-        String gID = ((String) myJson.get("name")).substring(1);
+        String gID = ((String) myJson.get("name"));
         String majorNationTurn = (String) myJson.get("majorNationTurn");
-        int gInt = Integer.parseInt(gID)-1;
 
+        RegionInfo info = new RegionInfo();
+        info.setMajorNationTurn(majorNationTurn);
+        info.setClickedLand(gID);
+
+        info.setAttackMove(true);
+        info.setAttackSuccess(true);
+        //kolla om vi kan ta över jämför truppstorlekar för våran och motståndare
+
+
+        //om vi lyckas ta över, ta bort regionen, sedan lägg till i rätt
+        RemoveRegionFromEveryone(gID);
         switch (majorNationTurn) {
             case "Britain":
-                britain.addToRegionsOwned("g" + gID);
+                britain.addToRegionsOwned(gID);
                 break;
             case "Germany":
-                germany.addToRegionsOwned("g" + gID);
+                germany.addToRegionsOwned(gID);
                 break;
             case "France":
-                france.addToRegionsOwned("g" + gID);
+                france.addToRegionsOwned(gID);
                 break;
             case "Usa":
-                usa.addToRegionsOwned("g" + gID);
+                usa.addToRegionsOwned(gID);
                 break;
             case "Japan":
-                japan.addToRegionsOwned("g" + gID);
+                japan.addToRegionsOwned(gID);
                 break;
             case "Russia":
-                russia.addToRegionsOwned("g" + gID);
+                russia.addToRegionsOwned(gID);
                 break;
         }
+
         System.out.println(usa.getRegionsOwned() + " senast tillagt är:" + gID);
 
 //        for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
 //            idsForAdjacentRegions +="!3"+ adjacent;
 //        }
 
-        majorNationTurn += "!1" + gID;
 
-        return new RegionInfo(majorNationTurn);
+        return info;
+    }
+    public void RemoveRegionFromEveryone(String gID) {
+        britain.getRegionsOwned().remove(gID);
+        germany.getRegionsOwned().remove(gID);
+        france.getRegionsOwned().remove(gID);
+        usa.getRegionsOwned().remove(gID);
+        japan.getRegionsOwned().remove(gID);
+        russia.getRegionsOwned().remove(gID);
     }
 
     public void initMajorNationsList() {
