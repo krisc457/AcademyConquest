@@ -17,10 +17,14 @@ a:link {
 
 #loginbody {
     background: url(images/logMap.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-size: 120%;
+    animation:10s bgzoom infinite ease-in-out;
+}
+
+@keyframes bgzoom {
+    0%   {background-position-x: 0%;}
+    50%  {background-position-x: 10%;}
+    100% {background-position-x: 0%;}
 }
 
 #wrapperlogin {
@@ -47,10 +51,18 @@ a:link {
 }
 
 #logSubmit {
-    margin-left: 265px;
+    margin-left: 250px;
     margin-bottom: 10px;
     padding: 0px;
     width: 70px;
+}
+
+.dropdowncountry {
+    height: 7px;
+    width: 7px;
+    margin-top: 0.5em;
+    float: left;
+    background-color: blue;
 }
 
 header {

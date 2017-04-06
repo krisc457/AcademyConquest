@@ -56,3 +56,10 @@ $(document).ready(function() {
 
 
 });
+
+$(function () {
+    $('.dropdown-toggle').dropdown();
+    $('#majorNationsDropdown li > a').click(function () {
+        $('#droptext').text($(this).html());
+    });
+});
