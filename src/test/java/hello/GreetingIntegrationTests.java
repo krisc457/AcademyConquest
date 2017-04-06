@@ -68,7 +68,7 @@ public class GreetingIntegrationTests {
                     public void handleFrame(StompHeaders headers, Object payload) {
                         RegionInfo greeting = (RegionInfo) payload;
                         try {
-                            assertEquals("Hello, Spring!", greeting.getContent());
+                            assertEquals("Hello, Spring!", greeting.getClickedLand());
                         } catch (Throwable t) {
                             failure.set(t);
                         } finally {

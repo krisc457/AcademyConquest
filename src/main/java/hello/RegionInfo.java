@@ -2,31 +2,28 @@ package hello;
 
 public class RegionInfo {
 
-    private String content;
+    private String troops;
+    private String networth;
     private String namesOfAttackRegions;
     private String idsForAdjacentRegions;
     private String majorNationTurn;
 
+    private String clickedLand;
+
+    private boolean cancelMove = false;
+
+    private boolean attackMove = false;
+
+    private boolean attackSuccess = false;
+
+
     public RegionInfo() {
     }
 
-    public RegionInfo(String content) {
-        this.content = content;
-    }
-
-    public RegionInfo(String content, String namesOfAttackRegions, String idsForAdjacentRegions, String majorNationTurn) {
-        this.content = content;
+    public RegionInfo(String namesOfAttackRegions, String idsForAdjacentRegions, String majorNationTurn) {
         this.namesOfAttackRegions = namesOfAttackRegions;
         this.idsForAdjacentRegions = idsForAdjacentRegions;
         this.majorNationTurn = majorNationTurn;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getContent() {
-        return content;
     }
 
     public void setNamesOfAttackRegions(String namesOfAttackRegions) {
@@ -51,5 +48,49 @@ public class RegionInfo {
 
     public void setMajorNationTurn(String majorNationTurn) {
         this.majorNationTurn = majorNationTurn;
+    }
+    public boolean isCancelMove() {
+        return cancelMove;
+    }
+    public void setCancelMove(boolean cancelMove) {
+        this.cancelMove = cancelMove;
+    }
+    public boolean isAttackMove() {
+        return attackMove;
+    }
+
+    public void setAttackMove(boolean attackMove) {
+        this.attackMove = attackMove;
+    }
+
+    public boolean isAttackSuccess() {
+        return attackSuccess;
+    }
+
+    public void setAttackSuccess(boolean attackSuccess) {
+        this.attackSuccess = attackSuccess;
+    }
+    public String getClickedLand() {
+        return clickedLand;
+    }
+
+    public void setClickedLand(String clickedLand) {
+        this.clickedLand = clickedLand;
+    }
+
+    public String getTroops() {
+        return troops;
+    }
+
+    public void setTroops(String troops) {
+        this.troops = troops;
+    }
+
+    public String getNetworth() {
+        return networth;
+    }
+
+    public void setNetworth(String networth) {
+        this.networth = networth;
     }
 }
