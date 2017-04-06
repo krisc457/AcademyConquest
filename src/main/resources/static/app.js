@@ -77,6 +77,7 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
         $(".chosen").removeClass("chosen");
         $(".others").removeClass("others");
 
+
         if(attackSuccess) {
             switch (majorNationTurn) {
                 case "Britain":

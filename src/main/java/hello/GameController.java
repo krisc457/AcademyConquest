@@ -25,8 +25,6 @@ public class GameController {
     MajorNation japan = new MajorNation("JAPAN");
     MajorNation russia = new MajorNation("RUSSIA");
 
-    String activeCountry = "usa";
-
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
@@ -58,7 +56,6 @@ public class GameController {
                         namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                     }
                 }
-                System.out.println(majorNationTurn);
                 break;
             case "Germany":
                 for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
@@ -66,7 +63,6 @@ public class GameController {
                         namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                     }
                 }
-                System.out.println(majorNationTurn);
                 break;
             case "France":
                 for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
@@ -74,7 +70,6 @@ public class GameController {
                         namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                     }
                 }
-                System.out.println(majorNationTurn);
                 break;
             case "Usa":
                 for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
@@ -89,7 +84,6 @@ public class GameController {
                         namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                     }
                 }
-                System.out.println(majorNationTurn);
                 break;
             case "Russia":
                 for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
@@ -97,7 +91,6 @@ public class GameController {
                         namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
                     }
                 }
-                System.out.println(majorNationTurn);
                 break;
         }
 
@@ -105,10 +98,8 @@ public class GameController {
             idsForAdjacentRegions +="!3"+ adjacent;
         }
         idsForAdjacentRegions +="!3"+ myJson.get("name");
-        System.out.println(idsForAdjacentRegions);
-        System.out.println(majorNationTurn);
 
-         RegionInfo info = new RegionInfo(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn);
+        RegionInfo info = new RegionInfo(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn);
         info.setTroops(""+activeGameBoard.get(gInt).getTroops());
         info.setNetworth(""+activeGameBoard.get(gInt).getNetworth());
         info.setClickedLand(activeGameBoard.get(gInt).getName());
@@ -164,8 +155,6 @@ public class GameController {
                 russia.addToRegionsOwned(gID);
                 break;
         }
-
-        System.out.println(usa.getRegionsOwned() + " senast tillagt är:" + gID);
 
 //        for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
 //            idsForAdjacentRegions +="!3"+ adjacent;
