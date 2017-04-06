@@ -22,7 +22,8 @@ $(document).ready(function(){
             updateGame(
                 JSON.parse(greeting.body).content,
                 JSON.parse(greeting.body).namesOfAttackRegions,
-                JSON.parse(greeting.body).idsForAdjacentRegions
+                JSON.parse(greeting.body).idsForAdjacentRegions,
+                JSON.parse(greeting.body).majorNationTurn
             );
         });
     });
@@ -44,10 +45,12 @@ $(document).ready(function(){
  }
  */
 
-function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
+function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn) {
     var currentLand = currentLand.split("!1");
     var namesOfAttackRegions = namesOfAttackRegions.split("!2");
     var idsForAdjacentRegions = idsForAdjacentRegions.split("!3");
+    var majorNationTurn = majorNationTurn;
+    var chosenRegion = idsForAdjacentRegions[idsForAdjacentRegions.length-1];
 
     $("#CountryName").html(currentLand[0]);
     $("#CountryValues").html(currentLand[1]);
@@ -58,7 +61,9 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
     for(var i=1; i<idsForAdjacentRegions.length-1; i++){
         $("#" + idsForAdjacentRegions[i] + " > g > a > path").addClass("adjacent");
     }
-    $("#" + idsForAdjacentRegions[idsForAdjacentRegions.length-1] + " > g > a > path").addClass("chosen");
+
+
+    $("#" + chosenRegion + " > g > a > path").addClass("chosen");
     $("path:not(.adjacent):not(.chosen)").addClass("others");
 
     var attackRegionOutput = "";
@@ -67,7 +72,37 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions) {
     }
     $("#ifAttackIsPossible").append().html("<h4>Du kan attackera från:</h4>" + attackRegionOutput);
     $(".attackFrom").click(function () {
-        stompClient.send("/app/attack", {}, JSON.stringify({'name':idsForAdjacentRegions[idsForAdjacentRegions.length-1]}));
+        stompClient.send("/app/attack", {}, JSON.stringify({'name': chosenRegion, "majorNationTurn": majorNationTurn}));
+
+        switch (majorNationTurn) {
+            case "Britain":
+                $("#" + chosenRegion + " > g > a > path").removeClass();
+                $("#" + chosenRegion + " > g > a > path").addClass("active purple");
+                break;
+            case "Germany":
+                $("#" + chosenRegion + " > g > a > path").removeClass();
+                $("#" + chosenRegion + " > g > a > path").addClass("active blue");
+                break;
+            case "France":
+                $("#" + chosenRegion + " > g > a > path").removeClass();
+                $("#" + chosenRegion + " > g > a > path").addClass("active green");
+                break;
+            case "Usa":
+                $("#" + chosenRegion + " > g > a > path").removeClass();
+                $("#" + chosenRegion + " > g > a > path").addClass("active teal");
+                break;
+            case "Japan":
+                $("#" + chosenRegion + " > g > a > path").removeClass();
+                $("#" + chosenRegion + " > g > a > path").addClass("active yellow");
+                break;
+            case "Russia":
+                $("#" + chosenRegion + " > g > a > path").removeClass();
+                $("#" + chosenRegion + " > g > a > path").addClass("active red");
+                break;
+        }
+        $(".adjacent").removeClass("adjacent");
+        $(".others").removeClass("others");
+        $(".chosen").removeClass("chosen");
     });
 }
 

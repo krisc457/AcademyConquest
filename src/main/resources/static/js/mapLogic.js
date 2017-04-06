@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var majorNationTurn;
+    var majorNationTurn = "Britain";
 
     $("#majorNationsDropdown > li > a").click(function(){
         majorNationTurn = $(this).attr("id");
@@ -13,6 +13,7 @@ $(document).ready(function() {
             $(".others").removeClass("others");
         } else {
             var myId = $(this).parent().parent().attr('id');
+            console.log("Land: " + majorNationTurn);
             stompClient.send("/app/makeMove", {}, JSON.stringify({'name': myId, "majorNationTurn": majorNationTurn}));
         }
     });

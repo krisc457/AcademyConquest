@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var majorNationTurn;
+    var majorNationTurn = "Britain";
 
     $("#majorNationsDropdown > li > a").click(function(){
         majorNationTurn = $(this).attr("id");
@@ -13,15 +13,8 @@ $(document).ready(function() {
             $(".others").removeClass("others");
         } else {
             var myId = $(this).parent().parent().attr('id');
-<<<<<<< HEAD
-<<<<<<< HEAD
-            stompClient.send("/app/makeMove", {}, JSON.stringify({'person': myId}));
-=======
-            stompClient.send("/app/makeMove", {}, JSON.stringify({'name': myId, 'majorNationTurn': majorNationTurn}));
->>>>>>> 230f714ee0b39b6038e69b780d6b0a449db6f50a
-=======
+            console.log("Land: " + majorNationTurn);
             stompClient.send("/app/makeMove", {}, JSON.stringify({'name': myId, "majorNationTurn": majorNationTurn}));
->>>>>>> 6bb1f523f029b11bfab750d3c59f7bf0a1971d40
         }
     });
 
