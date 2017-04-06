@@ -19,9 +19,7 @@ $(document).ready(function() {
     });
 
     $("#btnClose").click(function(){
-        $(".adjacent").removeClass("adjacent");
-        $(".others").removeClass("others");
-        $(".chosen").removeClass("chosen");
+        stompClient.send("/app/cancelMove", {});
     });
 
     var width = $("#gameMap").width();

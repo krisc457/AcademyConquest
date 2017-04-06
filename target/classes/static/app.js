@@ -20,12 +20,18 @@ $(document).ready(function(){
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/gameRoom', function (greeting) {
             updateGame(
-                JSON.parse(greeting.body).content,
                 JSON.parse(greeting.body).namesOfAttackRegions,
                 JSON.parse(greeting.body).idsForAdjacentRegions,
-                JSON.parse(greeting.body).majorNationTurn
+                JSON.parse(greeting.body).majorNationTurn,
+                JSON.parse(greeting.body).cancelMove,
+                JSON.parse(greeting.body).attackMove,
+                JSON.parse(greeting.body).attackSuccess,
+                JSON.parse(greeting.body).clickedLand,
+                JSON.parse(greeting.body).troops,
+                JSON.parse(greeting.body).networth
             );
         });
+
     });
 });
 
@@ -44,16 +50,67 @@ $(document).ready(function(){
  stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
  }
  */
-
-function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn) {
-    var currentLand = currentLand.split("!1");
+function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn, cancelMove, attackMove, attackSuccess, clickedLand, troops, networth) {
+    if(namesOfAttackRegions != null) {
     var namesOfAttackRegions = namesOfAttackRegions.split("!2");
+    }
+    else {
+        namesOfAttackRegions = "";
+    }
+    if(idsForAdjacentRegions != null) {
     var idsForAdjacentRegions = idsForAdjacentRegions.split("!3");
+    }
+    else {
+        idsForAdjacentRegions = "";
+    }
     var majorNationTurn = majorNationTurn;
     var chosenRegion = idsForAdjacentRegions[idsForAdjacentRegions.length-1];
 
-    $("#CountryName").html(currentLand[0]);
-    $("#CountryValues").html(currentLand[1]);
+    if(cancelMove) {
+        $(".adjacent").removeClass("adjacent");
+        $(".chosen").removeClass("chosen");
+        $(".others").removeClass("others");
+        return;
+    }
+    else if (attackMove) {
+        $(".adjacent").removeClass("adjacent");
+        $(".chosen").removeClass("chosen");
+        $(".others").removeClass("others");
+
+        if(attackSuccess) {
+            switch (majorNationTurn) {
+                case "Britain":
+                    $("#" + clickedLand + " > g > a > path").removeClass();
+                    $("#" + clickedLand + " > g > a > path").addClass("active purple");
+                    break;
+                case "Germany":
+                    $("#" + clickedLand + " > g > a > path").removeClass();
+                    $("#" + clickedLand + " > g > a > path").addClass("active blue");
+                    break;
+                case "France":
+                    $("#" + clickedLand + " > g > a > path").removeClass();
+                    $("#" + clickedLand + " > g > a > path").addClass("active green");
+                    break;
+                case "Usa":
+                    $("#" + clickedLand + " > g > a > path").removeClass();
+                    $("#" + clickedLand + " > g > a > path").addClass("active teal");
+                    break;
+                case "Japan":
+                    $("#" + clickedLand + " > g > a > path").removeClass();
+                    $("#" + clickedLand + " > g > a > path").addClass("active yellow");
+                    break;
+                case "Russia":
+                    $("#" + clickedLand + " > g > a > path").removeClass();
+                    $("#" + clickedLand + " > g > a > path").addClass("active red");
+                    break;
+            }
+        }
+        return;
+    }
+
+
+    $("#CountryName").html(clickedLand);
+    $("#CountryValues").html("<p>Troops :"+troops+"</p><p>Networth : "+networth+"</p>");
 
     $(".adjacent").removeClass("adjacent");
     $(".chosen").removeClass("chosen");
@@ -61,7 +118,6 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions, ma
     for(var i=1; i<idsForAdjacentRegions.length-1; i++){
         $("#" + idsForAdjacentRegions[i] + " > g > a > path").addClass("adjacent");
     }
-
 
     $("#" + chosenRegion + " > g > a > path").addClass("chosen");
     $("path:not(.adjacent):not(.chosen)").addClass("others");
@@ -74,36 +130,9 @@ function updateGame(currentLand, namesOfAttackRegions, idsForAdjacentRegions, ma
     $(".attackFrom").click(function () {
         stompClient.send("/app/attack", {}, JSON.stringify({'name': chosenRegion, "majorNationTurn": majorNationTurn}));
 
-        switch (majorNationTurn) {
-            case "Britain":
-                $("#" + chosenRegion + " > g > a > path").removeClass();
-                $("#" + chosenRegion + " > g > a > path").addClass("active purple");
-                break;
-            case "Germany":
-                $("#" + chosenRegion + " > g > a > path").removeClass();
-                $("#" + chosenRegion + " > g > a > path").addClass("active blue");
-                break;
-            case "France":
-                $("#" + chosenRegion + " > g > a > path").removeClass();
-                $("#" + chosenRegion + " > g > a > path").addClass("active green");
-                break;
-            case "Usa":
-                $("#" + chosenRegion + " > g > a > path").removeClass();
-                $("#" + chosenRegion + " > g > a > path").addClass("active teal");
-                break;
-            case "Japan":
-                $("#" + chosenRegion + " > g > a > path").removeClass();
-                $("#" + chosenRegion + " > g > a > path").addClass("active yellow");
-                break;
-            case "Russia":
-                $("#" + chosenRegion + " > g > a > path").removeClass();
-                $("#" + chosenRegion + " > g > a > path").addClass("active red");
-                break;
-        }
-        $(".adjacent").removeClass("adjacent");
-        $(".others").removeClass("others");
-        $(".chosen").removeClass("chosen");
     });
+
+
 }
 
 
