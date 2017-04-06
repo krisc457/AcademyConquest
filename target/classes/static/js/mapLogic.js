@@ -7,8 +7,14 @@ $(document).ready(function() {
             $(".others").removeClass("others");
         } else {
             var myId = $(this).parent().parent().attr('id');
-            stompClient.send("/app/endTurn", {}, JSON.stringify({'name': myId}));
+            stompClient.send("/app/makeMove", {}, JSON.stringify({'name': myId}));
         }
+    });
+
+    $("#btnClose").click(function(){
+        $(".adjacent").removeClass("adjacent");
+        $(".others").removeClass("others");
+        $(".chosen").removeClass("chosen");
     });
 
     var width = $("#gameMap").width();
