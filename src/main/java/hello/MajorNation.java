@@ -16,7 +16,6 @@ public class MajorNation {
         setRegions(nationName);
     }
 
-
     public List<String> getRegionsOwned() {
         return regionsOwned;
     }

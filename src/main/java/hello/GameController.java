@@ -24,7 +24,9 @@ public class GameController {
     MajorNation usa = new MajorNation("USA");
     MajorNation japan = new MajorNation("JAPAN");
     MajorNation russia = new MajorNation("RUSSIA");
+
     String activeCountry = "usa";
+
 
     @GetMapping("/map")
     public ModelAndView map(HttpSession session) {
@@ -39,11 +41,8 @@ public class GameController {
     @MessageMapping("/makeMove")
     @SendTo("/topic/gameRoom")
     public RegionInfo region(String regionIdObject) throws Exception {
-        System.out.println(regionIdObject);
         JSONParser myJsonParser = new JSONParser();
         JSONObject myJson = (JSONObject) myJsonParser.parse(regionIdObject);
-        //System.out.println(myJson.get("name"));
-        //System.out.println(myJson.get("majorNationTurn"));
         //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp
 
         String gID = ((String) myJson.get("name")).substring(1);
@@ -55,21 +54,50 @@ public class GameController {
 
         switch (majorNationTurn) {
             case "Britain":
+                for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
+                    if (britain.getRegionsOwned().contains(item)) {
+                        namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
+                    }
+                }
                 System.out.println(majorNationTurn);
                 break;
             case "Germany":
+                for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
+                    if (germany.getRegionsOwned().contains(item)) {
+                        namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
+                    }
+                }
                 System.out.println(majorNationTurn);
                 break;
             case "France":
+                for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
+                    if (france.getRegionsOwned().contains(item)) {
+                        namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
+                    }
+                }
                 System.out.println(majorNationTurn);
                 break;
             case "Usa":
-                System.out.println(majorNationTurn);
+                for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
+                    if (usa.getRegionsOwned().contains(item)) {
+                        namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
+                    }
+                }
                 break;
             case "Japan":
+                for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
+                    if (japan.getRegionsOwned().contains(item)) {
+                        namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
+                    }
+                }
                 System.out.println(majorNationTurn);
                 break;
             case "Russia":
+                for (String item : activeGameBoard.get(gInt).getAdjacentRegions()) {
+                    if (russia.getRegionsOwned().contains(item)) {
+                        namesOfAttackRegions += "!2" + activeGameBoard.get(Integer.parseInt(item.substring(1)) - 1).getName();
+                    }
+                }
                 System.out.println(majorNationTurn);
                 break;
         }
@@ -78,7 +106,52 @@ public class GameController {
             idsForAdjacentRegions +="!3"+ adjacent;
         }
         idsForAdjacentRegions +="!3"+ myJson.get("name");
-        return new RegionInfo(currentLand, namesOfAttackRegions, idsForAdjacentRegions);
+        System.out.println(idsForAdjacentRegions);
+        System.out.println(majorNationTurn);
+
+        return new RegionInfo(currentLand, namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn);
+    }
+
+    @MessageMapping("/attack")
+    @SendTo("/topic/gameRoom")
+    public RegionInfo attack(String regionIdObject) throws Exception {
+        JSONParser myJsonParser = new JSONParser();
+        JSONObject myJson = (JSONObject) myJsonParser.parse(regionIdObject);
+        //Vi använder teckenkombination !1 för att kunna använda split i Javascript och dela upp
+
+        String gID = ((String) myJson.get("name")).substring(1);
+        String majorNationTurn = (String) myJson.get("majorNationTurn");
+        int gInt = Integer.parseInt(gID)-1;
+
+        switch (majorNationTurn) {
+            case "Britain":
+                britain.addToRegionsOwned("g" + gID);
+                break;
+            case "Germany":
+                germany.addToRegionsOwned("g" + gID);
+                break;
+            case "France":
+                france.addToRegionsOwned("g" + gID);
+                break;
+            case "Usa":
+                usa.addToRegionsOwned("g" + gID);
+                break;
+            case "Japan":
+                japan.addToRegionsOwned("g" + gID);
+                break;
+            case "Russia":
+                russia.addToRegionsOwned("g" + gID);
+                break;
+        }
+        System.out.println(usa.getRegionsOwned() + " senast tillagt är:" + gID);
+
+//        for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
+//            idsForAdjacentRegions +="!3"+ adjacent;
+//        }
+
+        majorNationTurn += "!1" + gID;
+
+        return new RegionInfo(majorNationTurn);
     }
 
     public void initMajorNationsList() {

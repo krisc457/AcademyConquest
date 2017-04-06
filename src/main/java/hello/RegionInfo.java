@@ -5,6 +5,7 @@ public class RegionInfo {
     private String content;
     private String namesOfAttackRegions;
     private String idsForAdjacentRegions;
+    private String majorNationTurn;
 
     public RegionInfo() {
     }
@@ -13,10 +14,11 @@ public class RegionInfo {
         this.content = content;
     }
 
-    public RegionInfo(String content, String namesOfAttackRegions, String idsForAdjacentRegions) {
+    public RegionInfo(String content, String namesOfAttackRegions, String idsForAdjacentRegions, String majorNationTurn) {
         this.content = content;
         this.namesOfAttackRegions = namesOfAttackRegions;
         this.idsForAdjacentRegions = idsForAdjacentRegions;
+        this.majorNationTurn = majorNationTurn;
     }
 
     public void setContent(String content) {
@@ -41,5 +43,13 @@ public class RegionInfo {
 
     public void setIdsForAdjacentRegions(String idsForAdjacentRegions) {
         this.idsForAdjacentRegions = idsForAdjacentRegions;
+    }
+
+    public String getMajorNationTurn() {
+        return majorNationTurn;
+    }
+
+    public void setMajorNationTurn(String majorNationTurn) {
+        this.majorNationTurn = majorNationTurn;
     }
 }
