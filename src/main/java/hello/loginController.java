@@ -3,11 +3,10 @@ package hello;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -33,6 +32,17 @@ public class loginController {
             session.setAttribute("user", login);
         return new ModelAndView("/map").addObject("UserName",Username);
     }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView logout(HttpServletRequest request) {
+        HttpSession session= request.getSession(false);
+        if(session != null) {
+            session.invalidate();
+        }
+
+        return new ModelAndView("redirect:/index.html");
+    }
+
 
     @GetMapping("/Signup")
     public ModelAndView form(String username, String password) {
