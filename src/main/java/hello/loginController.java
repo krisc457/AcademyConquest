@@ -34,7 +34,7 @@ public class loginController {
         return new ModelAndView("/map").addObject("UserName",Username);
     }
 
-    @GetMapping("/newUser")
+    @GetMapping("/Signup")
     public ModelAndView form(String username, String password) {
         UserSignUp user = new UserSignUp( "", "");
         ModelAndView mv = new ModelAndView("signUp");
