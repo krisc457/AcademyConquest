@@ -47,7 +47,7 @@ public class GameController {
 
         String gID = ((String) myJson.get("name")).substring(1);
         String majorNationTurn = (String) myJson.get("majorNationTurn");
-        int gInt = Integer.parseInt(gID)-1;
+        int gInt = Integer.parseInt(gID) - 1;
         String namesOfAttackRegions = "";
         String idsForAdjacentRegions = "";
 
@@ -102,15 +102,15 @@ public class GameController {
         }
 
         for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
-            idsForAdjacentRegions +="!3"+ adjacent;
+            idsForAdjacentRegions += "!3" + adjacent;
         }
-        idsForAdjacentRegions +="!3"+ myJson.get("name");
+        idsForAdjacentRegions += "!3" + myJson.get("name");
         System.out.println(idsForAdjacentRegions);
         System.out.println(majorNationTurn);
 
-         RegionInfo info = new RegionInfo(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn);
-        info.setTroops(""+activeGameBoard.get(gInt).getTroops());
-        info.setNetworth(""+activeGameBoard.get(gInt).getNetworth());
+        RegionInfo info = new RegionInfo(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn);
+        info.setTroops("" + activeGameBoard.get(gInt).getTroops());
+        info.setNetworth("" + activeGameBoard.get(gInt).getNetworth());
         info.setClickedLand(activeGameBoard.get(gInt).getName());
         return info;
     }
@@ -118,9 +118,9 @@ public class GameController {
     @MessageMapping("/cancelMove")
     @SendTo("/topic/gameRoom")
     public RegionInfo cancelMove() throws Exception {
-    RegionInfo info = new RegionInfo();
-    info.setCancelMove(true);
-    return info;
+        RegionInfo info = new RegionInfo();
+        info.setCancelMove(true);
+        return info;
     }
 
     @MessageMapping("/attack")
@@ -133,12 +133,21 @@ public class GameController {
         String gID = ((String) myJson.get("name"));
         String majorNationTurn = (String) myJson.get("majorNationTurn");
 
+        //Hämta troops landet man attackerar ifrån med gID och matcha land med activeGameBoard (tror jag...)
+        //substring -1 på gID så vi får fram gInt och kör mot activeGameBoard.get(gInt)
+        Long troopsFromAttackLand = activeGameBoard.get(0).getTroops();
+
         RegionInfo info = new RegionInfo();
         info.setMajorNationTurn(majorNationTurn);
         info.setClickedLand(gID);
 
         info.setAttackMove(true);
-        info.setAttackSuccess(true);
+        System.out.println("troops värde " + info.getTroops());
+        if (Integer.parseInt(info.getTroops()) < troopsFromAttackLand) {
+            info.setAttackSuccess(true);
+        } else {
+            info.setAttackSuccess(false);
+        }
         //kolla om vi kan ta över jämför truppstorlekar för våran och motståndare
 
 
@@ -146,6 +155,7 @@ public class GameController {
         RemoveRegionFromEveryone(gID);
         switch (majorNationTurn) {
             case "Britain":
+
                 britain.addToRegionsOwned(gID);
                 break;
             case "Germany":
@@ -172,6 +182,7 @@ public class GameController {
 
         return info;
     }
+
     public void RemoveRegionFromEveryone(String gID) {
         britain.getRegionsOwned().remove(gID);
         germany.getRegionsOwned().remove(gID);
@@ -182,22 +193,22 @@ public class GameController {
     }
 
     public void initMajorNationsList() {
-        if (britain != null){
+        if (britain != null) {
             majorNations.add(britain);
         }
-        if (germany != null){
+        if (germany != null) {
             majorNations.add(germany);
         }
-        if (france != null){
+        if (france != null) {
             majorNations.add(france);
         }
-        if (usa != null){
+        if (usa != null) {
             majorNations.add(usa);
         }
-        if (japan != null){
+        if (japan != null) {
             majorNations.add(japan);
         }
-        if (russia != null){
+        if (russia != null) {
             majorNations.add(russia);
         }
     }
