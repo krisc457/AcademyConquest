@@ -1,4 +1,6 @@
 var stompClient = null;
+var clickedRegionToHaveAdjacents;
+var clickedRegionAdjacents = [];
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -32,10 +34,8 @@ $(document).ready(function(){
                 //Lägg in värde med land man attackerar ifrån
             );
         });
-
     });
 });
-
 /*
  function disconnect() {
  if (stompClient != null) {
@@ -53,19 +53,21 @@ $(document).ready(function(){
  */
 
 //Skicka också in värde från det land man attackerar ifrån
+
 function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn, cancelMove, attackMove, attackSuccess, clickedLand, troops, networth) {
+
     if(namesOfAttackRegions != null) {
-    var namesOfAttackRegions = namesOfAttackRegions.split("!2");
-    }
-    else {
+        var namesOfAttackRegions = namesOfAttackRegions.split("!2");
+    } else {
         namesOfAttackRegions = "";
     }
+
     if(idsForAdjacentRegions != null) {
-    var idsForAdjacentRegions = idsForAdjacentRegions.split("!3");
-    }
-    else {
+        var idsForAdjacentRegions = idsForAdjacentRegions.split("!3");
+    } else {
         idsForAdjacentRegions = "";
     }
+
     var majorNationTurn = majorNationTurn;
     var chosenRegion = idsForAdjacentRegions[idsForAdjacentRegions.length-1];
 
@@ -111,19 +113,23 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
         return;
     }
 
-
     $("#CountryName").html(clickedLand);
     $("#CountryValues").html("<p>Troops :"+troops+"</p><p>Networth : "+networth+"</p>");
 
-    $(".adjacent").removeClass("adjacent");
-    $(".chosen").removeClass("chosen");
-    $(".others").removeClass("others");
-    for(var i=1; i<idsForAdjacentRegions.length-1; i++){
-        $("#" + idsForAdjacentRegions[i] + " > g > a > path").addClass("adjacent");
-    }
+    // $(".adjacent").removeClass("adjacent");
+    // $(".chosen").removeClass("chosen");
+    // $(".others").removeClass("others");
+    // for(var i=1; i<idsForAdjacentRegions.length-1; i++){
+    //     $("#" + idsForAdjacentRegions[i] + " > g > a > path").addClass("adjacent");
+    // }
+    //
+    // $("#" + chosenRegion + " > g > a > path").addClass("chosen");
+    // $("path:not(.adjacent):not(.chosen)").addClass("others");
 
-    $("#" + chosenRegion + " > g > a > path").addClass("chosen");
-    $("path:not(.adjacent):not(.chosen)").addClass("others");
+    clickedRegionToHaveAdjacents = chosenRegion;
+    for(var i=1; i<idsForAdjacentRegions.length-1; i++){
+        clickedRegionAdjacents.push(idsForAdjacentRegions[i]);
+    }
 
     var attackRegionOutput = "";
     for (var i=1; i<namesOfAttackRegions.length; i++) {
@@ -134,7 +140,6 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
         stompClient.send("/app/attack", {}, JSON.stringify({'name': chosenRegion, "majorNationTurn": majorNationTurn}));
 
     });
-
 
 }
 
@@ -161,18 +166,24 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
 
 
 
+/*
+ function disconnect() {
+ if (stompClient != null) {
+ stompClient.disconnect();
+ }
+ setConnected(false);
+ console.log("Disconnected");
+ }
+ */
 
 /*
-<<<<<<< HEAD
- $(function () {
- $("form").on('submit', function (e) {
- e.preventDefault();
- });
- $( "#connect" ).click(function() { connect(); });
- $( "#disconnect" ).click(function() { disconnect(); });
- $( "#endTurn" ).click(function() { sendGameTurnData(); });
- });
-=======
+ function sendGameTurnData() {
+ stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
+ }
+ */
+
+
+/*
 $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
@@ -197,5 +208,4 @@ $(function () {
  function sendGameTurnData() {
  stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
  }
->>>>>>> 230f714ee0b39b6038e69b780d6b0a449db6f50a
  */

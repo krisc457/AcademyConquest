@@ -187,6 +187,7 @@ public class Board {
         regions.get(0).addToAdjacentRegions("g2");
 
         regions.get(1).addToAdjacentRegions("g1");
+        regions.get(1).addToAdjacentRegions("g101");
 
         regions.get(2).addToAdjacentRegions("g1");
         regions.get(2).addToAdjacentRegions("g4");
@@ -616,6 +617,7 @@ public class Board {
 
         regions.get(100).addToAdjacentRegions("g100");
         regions.get(100).addToAdjacentRegions("g107");
+        regions.get(100).addToAdjacentRegions("g2");
 
         regions.get(101).addToAdjacentRegions("g107");
 
