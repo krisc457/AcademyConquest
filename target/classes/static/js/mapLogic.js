@@ -13,8 +13,19 @@ $(document).ready(function() {
             $(".others").removeClass("others");
         } else {
             var myId = $(this).parent().parent().attr('id');
-            console.log("Land: " + majorNationTurn);
             stompClient.send("/app/makeMove", {}, JSON.stringify({'name': myId, "majorNationTurn": majorNationTurn}));
+            setTimeout(function(){
+                $(".adjacent").removeClass("adjacent");
+                $(".chosen").removeClass("chosen");
+                $(".others").removeClass("others");
+                for(var i=0; i<clickedRegionAdjacents.length; i++){
+                    $("#" + clickedRegionAdjacents[i] + " > g > a > path").addClass("adjacent");
+                }
+                $("#" + clickedRegionToHaveAdjacents + " > g > a > path").addClass("chosen");
+                $("path:not(.adjacent):not(.chosen)").addClass("others");
+                clickedRegionAdjacents.length=0;
+                clickedRegionToHaveAdjacents = "";
+            }, 500);
         }
     });
 

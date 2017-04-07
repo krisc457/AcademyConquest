@@ -165,8 +165,6 @@ public class GameController {
                 break;
         }
 
-        System.out.println(usa.getRegionsOwned() + " senast tillagt är:" + gID);
-
 //        for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
 //            idsForAdjacentRegions +="!3"+ adjacent;
 //        }
