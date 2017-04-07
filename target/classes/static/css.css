@@ -110,20 +110,6 @@ path:hover:not(.active):not(.others) {
     cursor: pointer;
 }
 
-.adjacent {
-    /*  */
-}
-
-.chosen {
-    animation: chosenShow 1s infinite;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-}
-
-.adjacent {
-    /*  */
-}
-
 .chosen {
     animation: chosenShow 1s infinite;
     animation-fill-mode: forwards;
@@ -176,10 +162,6 @@ path:hover:not(.active):not(.others) {
     stroke: black;
 }
 
-.others:hover {
-    opacity: 1;
-    cursor: pointer;
-}
 
 .others:hover {
     opacity: 1 !important;
@@ -216,23 +198,6 @@ path:hover:not(.active):not(.others) {
     }
 }
 
-@keyframes chosenShow {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.9;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-.others:hover {
-    opacity: 1 !important;
-    cursor: pointer;
-}
-
 @keyframes zoomIn {
     from {
         transform: scale(1);
@@ -240,33 +205,6 @@ path:hover:not(.active):not(.others) {
     }
     to {
         transform: scale(1.25)
-    }
-}
-
-@-moz-keyframes zoomIn {
-    from {
-        -moz-transform: scale(1)
-    }
-    to {
-        -moz-transform: scale(1.25)
-    }
-}
-
-@-webkit-keyframes zoomIn {
-    from {
-        -webkit-transform: scale(1)
-    }
-    to {
-        -webkit-transform: scale(1.25)
-    }
-}
-
-@-o-keyframes zoomIn {
-    from {
-        -o-transform: scale(1)
-    }
-    to {
-        -o-transform: scale(1.25)
     }
 }
 
@@ -279,6 +217,15 @@ path:hover:not(.active):not(.others) {
     }
 }
 
+@-moz-keyframes zoomIn {
+    from {
+        -moz-transform: scale(1)
+    }
+    to {
+        -moz-transform: scale(1.25)
+    }
+}
+
 @-moz-keyframes zoomOut {
     from {
         -moz-transform: scale(1)
@@ -288,12 +235,30 @@ path:hover:not(.active):not(.others) {
     }
 }
 
+@-webkit-keyframes zoomIn {
+    from {
+        -webkit-transform: scale(1)
+    }
+    to {
+        -webkit-transform: scale(1.25)
+    }
+}
+
 @-webkit-keyframes zoomOut {
     from {
         -webkit-transform: scale(1)
     }
     to {
         -webkit-transform: scale(0.8)
+    }
+}
+
+@-o-keyframes zoomIn {
+    from {
+        -o-transform: scale(1)
+    }
+    to {
+        -o-transform: scale(1.25)
     }
 }
 
