@@ -31,13 +31,31 @@ $(document).ready(function(){
                 JSON.parse(greeting.body).clickedLand,
                 JSON.parse(greeting.body).troops,
                 JSON.parse(greeting.body).networth
+                //Lägg in värde med land man attackerar ifrån
             );
         });
     });
 });
+/*
+ function disconnect() {
+ if (stompClient != null) {
+ stompClient.disconnect();
+ }
+ setConnected(false);
+ console.log("Disconnected");
+ }
+ */
+
+/*
+ function sendGameTurnData() {
+ stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
+ }
+ */
+
+//Skicka också in värde från det land man attackerar ifrån
 
 function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn, cancelMove, attackMove, attackSuccess, clickedLand, troops, networth) {
-
+    clickedRegionAdjacents.length=0;
     if(namesOfAttackRegions != null) {
         var namesOfAttackRegions = namesOfAttackRegions.split("!2");
     } else {
@@ -166,16 +184,6 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
 
 
 /*
-<<<<<<< HEAD
- $(function () {
- $("form").on('submit', function (e) {
- e.preventDefault();
- });
- $( "#connect" ).click(function() { connect(); });
- $( "#disconnect" ).click(function() { disconnect(); });
- $( "#endTurn" ).click(function() { sendGameTurnData(); });
- });
-=======
 $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
@@ -200,5 +208,4 @@ $(function () {
  function sendGameTurnData() {
  stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
  }
->>>>>>> 230f714ee0b39b6038e69b780d6b0a449db6f50a
  */
