@@ -18,12 +18,13 @@ $(document).ready(function() {
                 $(".adjacent").removeClass("adjacent");
                 $(".chosen").removeClass("chosen");
                 $(".others").removeClass("others");
+                console.log("clickedRegionAdjacents är detta: " + clickedRegionAdjacents);
                 for(var i=0; i<clickedRegionAdjacents.length; i++){
                     $("#" + clickedRegionAdjacents[i] + " > g > a > path").addClass("adjacent");
                 }
                 $("#" + clickedRegionToHaveAdjacents + " > g > a > path").addClass("chosen");
                 $("path:not(.adjacent):not(.chosen)").addClass("others");
-                clickedRegionAdjacents.length=0;
+                //clickedRegionAdjacents.length=0;
                 clickedRegionToHaveAdjacents = "";
             }, 500);
         }

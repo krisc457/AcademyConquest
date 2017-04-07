@@ -55,7 +55,7 @@ $(document).ready(function(){
 //Skicka också in värde från det land man attackerar ifrån
 
 function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn, cancelMove, attackMove, attackSuccess, clickedLand, troops, networth) {
-
+    clickedRegionAdjacents.length=0;
     if(namesOfAttackRegions != null) {
         var namesOfAttackRegions = namesOfAttackRegions.split("!2");
     } else {
