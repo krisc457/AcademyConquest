@@ -1,3 +1,7 @@
+body {
+    //overflow:hidden;
+}
+
 @font-face {
     font-family: '18thCentury';
     src: url('18thCentury.ttf'); /* IE9 Compat Modes */
@@ -9,8 +13,8 @@ a:link {
 }
 
 #gameMap {
-    width: 5027px;
-    height: 2453px;
+    width: 3770px;
+    height: 1840px;
     background-image: url("images/baseMap.jpg");
     background-size: 100% 100%;
 }
@@ -63,6 +67,13 @@ a:link {
     margin-top: 0.5em;
     float: left;
     background-color: blue;
+}
+
+.modal-dialog {
+    position: fixed !important;
+    margin-top: 60px !important;
+    margin-left: 8px !important;
+    width: 300px !important;
 }
 
 header {
@@ -157,9 +168,13 @@ path:hover:not(.active):not(.others) {
 }
 
 .others {
-    opacity: 0.85;
     fill: black;
     stroke: black;
+    animation: opacityShow 0.1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    cursor: pointer;
 }
 
 
@@ -279,8 +294,8 @@ a:link {
 
 }
 
-#ifAttackIsPossible {
-    float: left;
+#ifAttackIsPossible > button {
+    margin-bottom: 5px;
 }
 
 .modal-footer > p {
