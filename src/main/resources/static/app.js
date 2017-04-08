@@ -19,7 +19,6 @@ $(document).ready(function(){
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
-        console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/gameRoom', function (greeting) {
             updateGame(
                 JSON.parse(greeting.body).namesOfAttackRegions,

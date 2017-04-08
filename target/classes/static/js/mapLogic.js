@@ -2,35 +2,43 @@ $(document).ready(function() {
 
     var majorNationTurn = "Britain";
 
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
+
     $("#majorNationsDropdown > li > a").click(function(){
         majorNationTurn = $(this).attr("id");
     });
 
     $('g > a').click(function () {
-        if($(this).children().hasClass("chosen")) {
+        if ($(this).children().hasClass("chosen")) {
             $(".adjacent").removeClass("adjacent");
             $(".chosen").removeClass("chosen");
             $(".others").removeClass("others");
         } else {
             var myId = $(this).parent().parent().attr('id');
-            stompClient.send("/app/makeMove", {}, JSON.stringify({'name': myId, "majorNationTurn": majorNationTurn}));
-            setTimeout(function(){
+            stompClient.send("/app/makeMove", {}, JSON.stringify({
+                'name': myId,
+                "majorNationTurn": majorNationTurn
+            }));
+            setTimeout(function () {
                 $(".adjacent").removeClass("adjacent");
                 $(".chosen").removeClass("chosen");
                 $(".others").removeClass("others");
-                console.log("clickedRegionAdjacents är detta: " + clickedRegionAdjacents);
-                for(var i=0; i<clickedRegionAdjacents.length; i++){
+                for (var i = 0; i < clickedRegionAdjacents.length; i++) {
                     $("#" + clickedRegionAdjacents[i] + " > g > a > path").addClass("adjacent");
                 }
                 $("#" + clickedRegionToHaveAdjacents + " > g > a > path").addClass("chosen");
                 $("path:not(.adjacent):not(.chosen)").addClass("others");
-                //clickedRegionAdjacents.length=0;
                 clickedRegionToHaveAdjacents = "";
+                $("body, html").animate({
+                    scrollTop: $(".chosen").offset().top - (windowHeight / 2) + ($(".chosen").height() / 2),
+                    scrollLeft: $(".chosen").offset().left - (windowWidth / 2) + ($(".chosen").width() / 2)
+                }, 200);
             }, 500);
         }
     });
 
-    $("#btnClose").click(function(){
+    $("#btnClose, .close").click(function(){
         stompClient.send("/app/cancelMove", {});
     });
 
