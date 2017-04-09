@@ -124,12 +124,27 @@ public class GameController {
 
         String gID = ((String) myJson.get("name"));
         String majorNationTurn = (String) myJson.get("majorNationTurn");
+        String attackingFromRegion = (String) myJson.get("attackingRegion");
+        int gInt = Integer.parseInt((gID).substring(1))-1;
+        long defenderTroops = activeGameBoard.get(gInt).getTroops(); //motsvarar troops i regionen jag väljer
 
+        long attackRegionTroops = 0;
+        for (Region region : activeGameBoard) {
+            if (region.getName().equalsIgnoreCase(attackingFromRegion)) {
+                attackRegionTroops = region.getTroops();
+                break;
+            }
+        }
         RegionInfo info = new RegionInfo();
         info.setMajorNationTurn(majorNationTurn);
         info.setClickedLand(gID);
 
         info.setAttackMove(true);
+
+        if (attackRegionTroops >= defenderTroops) { //lägg logik och setAttackSuccess här inne
+            System.out.println("Woho");
+        }
+        
         info.setAttackSuccess(true);
         //kolla om vi kan ta över jämför truppstorlekar för våran och motståndare
 
