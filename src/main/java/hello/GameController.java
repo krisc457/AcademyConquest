@@ -141,10 +141,17 @@ public class GameController {
 
         info.setAttackMove(true);
 
-        if (attackRegionTroops >= defenderTroops) { //lägg logik och setAttackSuccess här inne
-            System.out.println("Woho");
-        }
-        
+            if (attackRegionTroops >= defenderTroops) { //lägg logik och setAttackSuccess här inne
+                System.out.println("Woho");
+                info.setAttackSuccess(true);
+
+            }
+            else {
+                System.out.println("Oh no :(");
+                info.setAttackSuccess(false);
+
+            }
+
         info.setAttackSuccess(true);
         //kolla om vi kan ta över jämför truppstorlekar för våran och motståndare
 
