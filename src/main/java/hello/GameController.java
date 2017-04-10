@@ -152,7 +152,7 @@ public class GameController {
 
             }
 
-        info.setAttackSuccess(true);
+//        info.setAttackSuccess(true);
         //kolla om vi kan ta över jämför truppstorlekar för våran och motståndare
 
 
