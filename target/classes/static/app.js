@@ -35,23 +35,6 @@ $(document).ready(function(){
         });
     });
 });
-/*
- function disconnect() {
- if (stompClient != null) {
- stompClient.disconnect();
- }
- setConnected(false);
- console.log("Disconnected");
- }
- */
-
-/*
- function sendGameTurnData() {
- stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
- }
- */
-
-//Skicka också in värde från det land man attackerar ifrån
 
 function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn, cancelMove, attackMove, attackSuccess, clickedLand, troops, networth) {
     clickedRegionAdjacents.length=0;
@@ -115,16 +98,6 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
     $("#CountryName").html(clickedLand);
     $("#CountryValues").html("<p>Troops :"+troops+"</p><p>Networth : "+networth+"</p>");
 
-    // $(".adjacent").removeClass("adjacent");
-    // $(".chosen").removeClass("chosen");
-    // $(".others").removeClass("others");
-    // for(var i=1; i<idsForAdjacentRegions.length-1; i++){
-    //     $("#" + idsForAdjacentRegions[i] + " > g > a > path").addClass("adjacent");
-    // }
-    //
-    // $("#" + chosenRegion + " > g > a > path").addClass("chosen");
-    // $("path:not(.adjacent):not(.chosen)").addClass("others");
-
     clickedRegionToHaveAdjacents = chosenRegion;
     for(var i=1; i<idsForAdjacentRegions.length-1; i++){
         clickedRegionAdjacents.push(idsForAdjacentRegions[i]);
@@ -139,7 +112,7 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
         stompClient.send("/app/attack", {}, JSON.stringify({'name': chosenRegion, "majorNationTurn": majorNationTurn}));
 
     });
-
+    return Promise.resolve({clickedRegionToHaveAdjacents:clickedRegionToHaveAdjacents, clickedRegionAdjacents:[]});
 }
 
 
@@ -164,6 +137,23 @@ function updateGame(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn
 
 
 
+/*
+ function disconnect() {
+ if (stompClient != null) {
+ stompClient.disconnect();
+ }
+ setConnected(false);
+ console.log("Disconnected");
+ }
+ */
+
+/*
+ function sendGameTurnData() {
+ stompClient.send("/app/endTurn", {}, JSON.stringify({'name': $("#name").val()}));
+ }
+ */
+
+//Skicka också in värde från det land man attackerar ifrån
 
 /*
  function disconnect() {
