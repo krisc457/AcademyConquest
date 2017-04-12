@@ -98,7 +98,11 @@ public class GameController {
         for (String adjacent : activeGameBoard.get(gInt).getAdjacentRegions()) {
             idsForAdjacentRegions +="!3"+ adjacent;
         }
+<<<<<<< HEAD
         idsForAdjacentRegions +="!3"+ myJson.get("name");
+=======
+        idsForAdjacentRegions += "!3" + myJson.get("name");
+>>>>>>> 0df040b9ecf12631bccf0c55eb768a99ba2ddb9c
 
         RegionInfo info = new RegionInfo(namesOfAttackRegions, idsForAdjacentRegions, majorNationTurn);
         info.setTroops(""+activeGameBoard.get(gInt).getTroops());
@@ -140,6 +144,7 @@ public class GameController {
         info.setClickedLand(gID);
 
         info.setAttackMove(true);
+<<<<<<< HEAD
 
             if (attackRegionTroops >= defenderTroops) { //lägg logik och setAttackSuccess här inne
                 System.out.println("Woho");
@@ -153,6 +158,13 @@ public class GameController {
             }
 
 //        info.setAttackSuccess(true);
+=======
+        if (Integer.parseInt(info.getTroops()) < troopsFromAttackLand) {
+            info.setAttackSuccess(true);
+        } else {
+            info.setAttackSuccess(false);
+        }
+>>>>>>> 0df040b9ecf12631bccf0c55eb768a99ba2ddb9c
         //kolla om vi kan ta över jämför truppstorlekar för våran och motståndare
 
 
